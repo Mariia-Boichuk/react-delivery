@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: #efefef;
+  font-family: "Roboto", sans-serif;
+  color: #333333;
+  font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  opacity: 0.6;
+}
+
+button {
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+.input,
+.btn {
+  background: none;
+  border: none;
+  transition: 0.3s linear;
+  -webkit-transition: 0.3s linear;
+  -moz-transition: 0.3s linear;
+  -ms-transition: 0.3s linear;
+  -o-transition: 0.3s linear;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.mybutton {
+  border-radius: 20px;
+  border: 3px solid #66c05d;
+  padding: 10px 15px;
+  background-color: transparent;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.mybutton:hover {
+  background-color: green;
+  opacity: 0.5;
+}

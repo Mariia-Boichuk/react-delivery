@@ -1,0 +1,23 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
+  background-color: rgba(33, 33, 33, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: absolute;
+  animation: show-modal 0.5s forwards;
+  background-color: #fff;
+  border-radius: 3px;
+  min-width: 50%;
+  background-color: #f44336;
+  color: white;
+  padding: 40px;
+}

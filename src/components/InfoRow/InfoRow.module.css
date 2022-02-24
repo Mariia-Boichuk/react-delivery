@@ -1,0 +1,20 @@
+.info,
+.caption {
+  padding: 10px 15px;
+  width: max-content;
+  text-align: left;
+  border: none;
+}
+
+.caption {
+  background-color: #66c05d;
+  border-radius: 9px 0 0 9px;
+}
+
+.info {
+  border: 1px solid #66c05d;
+  border-radius: 0 9px 9px 0;
+}
+.row {
+  margin-bottom: 5px;
+}
