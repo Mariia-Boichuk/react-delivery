@@ -6,6 +6,8 @@ import ErrorContext from "../../context/ErrorContextProvider";
 import { LoaderContext } from "../../context/LoaderContextProvider";
 import st from "../Registration/Registration.module.css";
 import PageTitle from "../../components/PageTitle/PageTitle";
+import Input from "../../components/Input/Input";
+import Form from "../../components/Form/Form";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -36,46 +38,33 @@ export const LoginPage = () => {
       setIsLoading(false);
     }
   };
+
   return (
     <section>
       <PageTitle title="Log in" />
-      <form
-        className={st.form}
-        onSubmit={(event) => {
-          submitHandler(event);
-        }}
-      >
-        <div className={st.formControl}>
-          <input
-            className={st.input}
-            type="email"
-            placeholder="Email"
-            onChange={({ target }) => {
-              setEmail(target.value);
-            }}
-            value={email}
-            name="email"
-            required
-          />
-        </div>
-        <div className={st.formControl}>
-          <input
-            className={st.input}
-            type="password"
-            placeholder="Password"
-            onChange={({ target }) => {
-              setPassword(target.value);
-            }}
-            value={password}
-            name="password"
-            required
-          />
-        </div>
+      <Form submitHandler={submitHandler}>
+        <Input
+          value={email}
+          onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => {
+            setEmail(target.value);
+          }}
+          type="email"
+          name="email"
+        />
+
+        <Input
+          value={password}
+          onChange={({ target }) => {
+            setPassword(target.value);
+          }}
+          type="password"
+          name="password"
+        />
 
         <button type="submit" className={`mybutton ${st.submit}`}>
           Submit
         </button>
-      </form>
+      </Form>
     </section>
   );
 };

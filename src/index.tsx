@@ -7,6 +7,33 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContextProvider";
 import { ErrorContextProvider } from "./context/ErrorContextProvider";
 import LoaderContextProvider from "./context/LoaderContextProvider";
+import { createStore } from "redux";
+
+//action crea
+const setLoadingTrue = () => {
+  return {
+    type: "START_LOADING",
+  };
+};
+
+const setLoadingFalse = () => {
+  return {
+    type: "FINISH_LOADING",
+  };
+};
+
+//reducer
+const loading = (state = false, action) => {
+  switch (action.type) {
+    case "START_LOADING":
+      return true;
+
+    case "FINISH_LOADING":
+      return false;
+    default:
+      return state;
+  }
+};
 
 ReactDOM.render(
   <React.StrictMode>

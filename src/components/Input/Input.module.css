@@ -1,0 +1,16 @@
+.input {
+  border: 0;
+  border-bottom: 1px solid #bcbecb;
+  color: inherit;
+  width: 100%;
+  padding: 3px;
+  font-size: 16px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.formControl {
+  margin: 30px 0;
+}
