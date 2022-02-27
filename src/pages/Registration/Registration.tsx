@@ -2,22 +2,32 @@ import axios from "axios";
 import React, { useState } from "react";
 import { URLadr } from "../../utils/consts";
 import ErrorContext from "../../context/ErrorContextProvider";
-import { LoaderContext } from "../../context/LoaderContextProvider";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import st from "./Registration.module.css";
 import PageTitle from "../../components/PageTitle/PageTitle";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setErrorMes,
+  setLoadingFalse,
+  setLoadingTrue,
+} from "../../reduxFeatures/actions";
+import { loadingState } from "../../reduxFeatures/reducers/loading";
 
 export const Registration = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+
+  const loading = useSelector<loadingState>((state) => state.loading);
+
   const { setError } = useContext(ErrorContext);
-  const { setIsLoading } = useContext(LoaderContext);
+
   const navg = useNavigate();
 
   const submitHandler = async (event) => {
-    setIsLoading(true);
+    dispatch(setLoadingTrue());
     event.preventDefault();
 
     try {
@@ -27,20 +37,23 @@ export const Registration = () => {
         role,
       };
       await axios.post(`${URLadr}/api/auth/register`, registerData);
-      setIsLoading(false);
+
+      dispatch(setLoadingFalse());
     } catch (error) {
       if (error.response?.data?.message) {
-        setError(error.response.data.message);
+        dispatch(setErrorMes(error.response.data.message));
       } else {
-        setError("something gone wrong");
+        dispatch(setErrorMes("something gone wrong"));
       }
-      setIsLoading(false);
+
+      dispatch(setLoadingFalse());
     }
 
     navg("/signin");
   };
   return (
     <section>
+      {loading ? "registeded" : "not registered"}
       <PageTitle title="Register" />
       <form
         className={st.form}

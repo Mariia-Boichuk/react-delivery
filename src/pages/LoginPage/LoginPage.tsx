@@ -8,10 +8,12 @@ import st from "../Registration/Registration.module.css";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Input from "../../components/Input/Input";
 import Form from "../../components/Form/Form";
+import { useSelector } from "react-redux";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const { setJwt } = useContext(AuthContext);
   const { setError } = useContext(ErrorContext);
   const { setIsLoading } = useContext(LoaderContext);
@@ -54,7 +56,7 @@ export const LoginPage = () => {
 
         <Input
           value={password}
-          onChange={({ target }) => {
+          onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => {
             setPassword(target.value);
           }}
           type="password"

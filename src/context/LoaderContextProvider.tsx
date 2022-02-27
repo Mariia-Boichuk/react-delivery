@@ -14,7 +14,8 @@ const LoaderContextProvider = (props) => {
   const value = useMemo(() => ({ isLoading, setIsLoading }), [isLoading]);
   return (
     <LoaderContext.Provider value={value}>
-      {isLoading && <PendingView />} {props.children}
+      {isLoading && <h1>hHHHHHHHHHHHHHHHHHHHHH 99 HJKLLKKKKKKKKKKK</h1>}{" "}
+      {props.children}
     </LoaderContext.Provider>
   );
 };

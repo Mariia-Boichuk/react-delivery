@@ -7,46 +7,33 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContextProvider";
 import { ErrorContextProvider } from "./context/ErrorContextProvider";
 import LoaderContextProvider from "./context/LoaderContextProvider";
-import { createStore } from "redux";
+import { compose, createStore } from "redux";
+import allReducers from "./reduxFeatures/reducers";
+import { Provider } from "react-redux";
 
-//action crea
-const setLoadingTrue = () => {
-  return {
-    type: "START_LOADING",
-  };
-};
-
-const setLoadingFalse = () => {
-  return {
-    type: "FINISH_LOADING",
-  };
-};
-
-//reducer
-const loading = (state = false, action) => {
-  switch (action.type) {
-    case "START_LOADING":
-      return true;
-
-    case "FINISH_LOADING":
-      return false;
-    default:
-      return state;
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
   }
-};
+}
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const myStore = createStore(allReducers, composeEnhancers());
 
 ReactDOM.render(
-  <React.StrictMode>
-    <LoaderContextProvider>
-      <ErrorContextProvider>
-        <AuthContextProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </AuthContextProvider>
-      </ErrorContextProvider>
-    </LoaderContextProvider>
-  </React.StrictMode>,
+  <Provider store={myStore}>
+    <React.StrictMode>
+      <LoaderContextProvider>
+        <ErrorContextProvider>
+          <AuthContextProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </AuthContextProvider>
+        </ErrorContextProvider>
+      </LoaderContextProvider>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById("root")
 );
 

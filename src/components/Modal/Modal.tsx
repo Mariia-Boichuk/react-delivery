@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import st from "./Modal.module.css";
-import { useContext } from "react";
-import ErrorContext from "../../context/ErrorContextProvider";
+import { useDispatch } from "react-redux";
+import { clearErrorMes } from "../../reduxFeatures/actions/index";
 
 const Modal = ({ mes }) => {
-  const { setError } = useContext(ErrorContext);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const timer = setTimeout(() => {
-      setError("");
+      dispatch(clearErrorMes());
     }, 3000);
     return () => clearTimeout(timer);
   });
