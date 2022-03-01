@@ -1,10 +1,8 @@
 import { combineReducers } from "redux";
-import loadingReducer from "./loading";
-import errorReducer from "./error";
+import lodErrReducer from "./reducer";
 
 const allReducers = combineReducers({
-  loading: loadingReducer,
-  error: errorReducer,
+  lodErr: lodErrReducer,
 });
 
 export default allReducers;

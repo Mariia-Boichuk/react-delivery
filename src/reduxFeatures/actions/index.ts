@@ -1,30 +1,25 @@
+import { StatusType } from "../reducers/reducer";
 export type ActionSet = {
   type: string;
-  payload?: string;
+  payload?: { message?: string; isLoading?: boolean; newStatus?: StatusType };
 };
 
-export const setLoadingTrue = () => {
+export const setLoading = (isLoading: boolean) => {
   return {
-    type: "START_LOADING",
+    type: "SET_LOADING",
+    payload: { isLoading },
   };
 };
 
-export const setLoadingFalse = () => {
+export const setMes = (message: string) => {
   return {
-    type: "FINISH_LOADING",
+    type: "SET_MESSAGE",
+    payload: { message },
   };
 };
-
-//error red
-export const setErrorMes = (mes) => {
+export const setStatus = (newStatus: StatusType) => {
   return {
-    type: "SET_ERROR",
-    payload: mes,
-  };
-};
-
-export const clearErrorMes = () => {
-  return {
-    type: "CLEAR_ERROR",
+    type: "SET_STATUS",
+    payload: { newStatus },
   };
 };

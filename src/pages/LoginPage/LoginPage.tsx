@@ -9,8 +9,20 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import Input from "../../components/Input/Input";
 import Form from "../../components/Form/Form";
 import { useSelector } from "react-redux";
+import { useFormik } from "formik";
+
+interface MyFormValues {
+  email: string;
+  password: string;
+}
 
 export const LoginPage = () => {
+  // const formik = useFormik({
+  //   initialValues: {
+  //     email: "",
+  //     password: "",
+  //   },
+  // });
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

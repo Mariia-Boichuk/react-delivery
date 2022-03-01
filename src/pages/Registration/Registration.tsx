@@ -1,18 +1,16 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { URLadr } from "../../utils/consts";
-import ErrorContext from "../../context/ErrorContextProvider";
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import st from "./Registration.module.css";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { useSelector, useDispatch } from "react-redux";
+import { State, StatusType } from "../../reduxFeatures/reducers/reducer";
 import {
-  setErrorMes,
-  setLoadingFalse,
-  setLoadingTrue,
-} from "../../reduxFeatures/actions";
-import { loadingState } from "../../reduxFeatures/reducers/loading";
+  setLoading,
+  setMes,
+  setStatus,
+} from "../../reduxFeatures/actions/index";
 
 export const Registration = () => {
   const dispatch = useDispatch();
@@ -20,14 +18,12 @@ export const Registration = () => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
 
-  const loading = useSelector<loadingState>((state) => state.loading);
-
-  const { setError } = useContext(ErrorContext);
+  const loading = useSelector<State>((state) => state.lodErr.loading);
 
   const navg = useNavigate();
 
   const submitHandler = async (event) => {
-    dispatch(setLoadingTrue());
+    dispatch(setLoading(true));
     event.preventDefault();
 
     try {
@@ -38,15 +34,17 @@ export const Registration = () => {
       };
       await axios.post(`${URLadr}/api/auth/register`, registerData);
 
-      dispatch(setLoadingFalse());
+      dispatch(setLoading(false));
     } catch (error) {
+      dispatch(setStatus(StatusType.error));
+
       if (error.response?.data?.message) {
-        dispatch(setErrorMes(error.response.data.message));
+        dispatch(setMes(error.response.data.message));
       } else {
-        dispatch(setErrorMes("something gone wrong"));
+        dispatch(setMes("something gone wrong"));
       }
 
-      dispatch(setLoadingFalse());
+      dispatch(setLoading(false));
     }
 
     navg("/signin");
