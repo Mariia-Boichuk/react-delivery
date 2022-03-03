@@ -5,10 +5,19 @@ type InputProps = {
   value: string;
   name: string;
   type: string;
+  placeholder: string;
+  error: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
-const Input: React.FC<InputProps> = ({ value, name, type, onChange }) => {
+const Input: React.FC<InputProps> = ({
+  value,
+  name,
+  type,
+  onChange,
+  placeholder,
+  error,
+}) => {
   return (
     <div className={st.formControl}>
       <input
@@ -16,9 +25,11 @@ const Input: React.FC<InputProps> = ({ value, name, type, onChange }) => {
         value={value}
         name={name}
         className={st.input}
-        placeholder={name}
+        placeholder={placeholder}
         onChange={onChange}
       />
+
+      {error && <p>{error}</p>}
     </div>
   );
 };
