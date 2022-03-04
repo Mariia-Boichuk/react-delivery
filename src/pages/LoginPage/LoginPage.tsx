@@ -1,17 +1,14 @@
-import axios from "axios";
-import React, { useContext, useState } from "react";
 import { URLadr } from "../../utils/consts";
-import { AuthContext } from "../../context/AuthContext";
-import ErrorContext from "../../context/ErrorContextProvider";
-import { LoaderContext } from "../../context/LoaderContextProvider";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Input from "../../components/Input/Input";
 import Form from "../../components/Form/Form";
-import { useSelector } from "react-redux";
-import { Formik, Field, useFormik, FormikConfig, FormikProps } from "formik";
+import { useFormik, FormikProps } from "formik";
 import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import * as Yup from "yup";
 import useRequest from "../../utils/useRequest";
+import Cookies from "js-cookie";
+import { setToken } from "../../reduxFeatures/actions/index";
+import { useDispatch } from "react-redux";
 
 interface MyFormValues {
   email: string;
@@ -23,22 +20,22 @@ const initialValues = {
   password: "",
 };
 
-export const LoginPage = () => {
-  const { setJwt } = useContext(AuthContext);
-  const { setError } = useContext(ErrorContext);
-  const { setIsLoading } = useContext(LoaderContext);
+export const LoginPage: React.FC = () => {
+  const dispatch = useDispatch();
 
   const { fetchData } = useRequest();
   const submitHandler = async (values) => {
-    console.log("sumbit handler");
     const resp = await fetchData({
       method: "post",
       url: `${URLadr}/api/auth/login`,
       data: values,
       headers: { "Content-type": "application/json" },
     });
-    console.log("resp", resp);
-    setJwt(resp.jwt_token);
+
+    dispatch(setToken(resp.jwt_token));
+    //setJwt(resp.jwt_token);
+
+    Cookies.set("jwt", resp.jwt_token);
   };
 
   const formik: FormikProps<MyFormValues> = useFormik({

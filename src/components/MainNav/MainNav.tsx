@@ -4,6 +4,8 @@ import st from "./MainNav.module.css";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContextProvider";
 import { MY_PROFILE, SIGN_IN, REGISTER } from "../../utils/routes";
+import Cookies from "js-cookie";
+import { setToken } from "../../reduxFeatures/actions/index";
 
 const MainNav = () => {
   const navg = useNavigate();
@@ -73,8 +75,9 @@ const MainNav = () => {
                   onClick={(event) => {
                     event.preventDefault();
                     setJwt("");
+                    setToken("");
                     setUser(null);
-                    localStorage.removeItem("jwt");
+                    Cookies.remove("jwt");
                     navg(SIGN_IN);
                   }}
                 >

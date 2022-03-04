@@ -4,6 +4,7 @@ import axios from "axios";
 import { URLadr } from "../utils/consts";
 import { LoaderContext } from "./LoaderContextProvider";
 import { useContext, useMemo } from "react";
+import Cookies from "js-cookie";
 
 function AuthContextProvider(props) {
   const [jwt, setJwt] = useState("");
@@ -28,7 +29,7 @@ function AuthContextProvider(props) {
   }, []);
 
   useEffect(() => {
-    setJwt(localStorage.getItem("jwt"));
+    setJwt(Cookies.get("jwt"));
     if (jwt) {
       getMe(jwt);
     }

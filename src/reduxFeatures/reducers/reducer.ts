@@ -1,5 +1,8 @@
-import { ActionSet } from "../actions";
-
+import { UserI } from "./authReducer";
+export type ActionSet = {
+  type: string;
+  payload?: { message?: string; isLoading?: boolean; newStatus?: StatusType };
+};
 export enum StatusType {
   error = "error",
   success = "success",
@@ -8,10 +11,14 @@ export enum StatusType {
 }
 
 export interface State {
-  lodErr: { loading: boolean; message: string; status: StatusType };
+  request: { loading: boolean; message: string; status: StatusType };
+  auth: {
+    jwt: string;
+    user: UserI;
+  };
 }
 
-const lodErrReducer = (
+const requestReducer = (
   state = { loading: false, status: StatusType.noStatus, message: "" },
   action: ActionSet
 ) => {
@@ -30,4 +37,4 @@ const lodErrReducer = (
   }
 };
 
-export default lodErrReducer;
+export default requestReducer;

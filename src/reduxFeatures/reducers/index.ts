@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import lodErrReducer from "./reducer";
+import requestReducer from "./reducer";
+import authReducer from "./authReducer";
 
 const allReducers = combineReducers({
-  lodErr: lodErrReducer,
+  request: requestReducer,
+  auth: authReducer,
 });
 
 export default allReducers;

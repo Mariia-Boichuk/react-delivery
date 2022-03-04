@@ -4,26 +4,28 @@ import { setStatus, setLoading, setMes } from "../reduxFeatures/actions/index";
 import axios from "axios";
 import { useCallback } from "react";
 
+interface RequestDataType {
+  method: string;
+  url: string;
+  data?: object;
+  headers?: object;
+}
+
 const useRequest = () => {
   const dispatch = useDispatch();
-
   const fetchData = useCallback(async (requestData) => {
     dispatch(setLoading(true));
-
     try {
       const resp = await axios(requestData);
       dispatch(setLoading(false));
-
       return resp.data;
     } catch (error) {
       dispatch(setStatus(StatusType.error));
-
       if (error.response?.data?.message) {
         dispatch(setMes(error.response.data.message));
       } else {
         dispatch(setMes("something gone wrong"));
       }
-
       dispatch(setLoading(false));
     }
   }, []);

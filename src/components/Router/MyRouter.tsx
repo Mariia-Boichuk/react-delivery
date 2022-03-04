@@ -12,12 +12,11 @@ import { PendingView } from "../PendingView/PendingView";
 import Modal from "../Modal/Modal";
 import { State } from "../../reduxFeatures/reducers/reducer";
 
-const MyRouter = () => {
-  const { user } = useContext(AuthContext);
-
-  const loading = useSelector<State>((state) => state.lodErr.loading);
-  const status = useSelector<State>((state) => state.lodErr.status);
-  const mes = useSelector<State>((state) => state.lodErr.message);
+const MyRouter: React.FC = () => {
+  const loading = useSelector<State>((state) => state.request.loading);
+  const status = useSelector<State>((state) => state.request.status);
+  const mes = useSelector<State>((state) => state.request.message);
+  const user = useSelector<State>((state) => state.auth.user);
 
   return (
     <>

@@ -14,7 +14,7 @@ interface MyFormValues {
   role: string;
 }
 
-export const Registration = () => {
+export const Registration: React.FC = () => {
   const navg = useNavigate();
   const { fetchData } = useRequest();
   const submitHandler = async (values) => {
