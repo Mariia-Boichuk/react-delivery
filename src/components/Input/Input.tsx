@@ -1,3 +1,4 @@
+import { FormikErrors } from "formik";
 import React, { ChangeEventHandler } from "react";
 import st from "./Input.module.css";
 
@@ -6,7 +7,7 @@ type InputProps = {
   name: string;
   type: string;
   placeholder: string;
-  error: string;
+  error: FormikErrors<string>;
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
 

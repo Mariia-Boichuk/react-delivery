@@ -1,107 +1,85 @@
-import axios from "axios";
-import React, { useState } from "react";
 import { URLadr } from "../../utils/consts";
 import { useNavigate } from "react-router-dom";
-import st from "./Registration.module.css";
 import PageTitle from "../../components/PageTitle/PageTitle";
-import { useSelector, useDispatch } from "react-redux";
-import { State, StatusType } from "../../reduxFeatures/reducers/reducer";
-import {
-  setLoading,
-  setMes,
-  setStatus,
-} from "../../reduxFeatures/actions/index";
+import { useFormik, FormikProps } from "formik";
+import useRequest from "../../utils/useRequest";
+import Input from "../../components/Input/Input";
+import Form from "../../components/Form/Form";
+import * as Yup from "yup";
+import SubmitButton from "../../components/SubmitButton/SubmitButton";
+
+interface MyFormValues {
+  email: string;
+  password: string;
+  role: string;
+}
 
 export const Registration = () => {
-  const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
-
-  const loading = useSelector<State>((state) => state.lodErr.loading);
-
   const navg = useNavigate();
-
-  const submitHandler = async (event) => {
-    dispatch(setLoading(true));
-    event.preventDefault();
-
-    try {
-      const registerData = {
-        email,
-        password,
-        role,
-      };
-      await axios.post(`${URLadr}/api/auth/register`, registerData);
-
-      dispatch(setLoading(false));
-    } catch (error) {
-      dispatch(setStatus(StatusType.error));
-
-      if (error.response?.data?.message) {
-        dispatch(setMes(error.response.data.message));
-      } else {
-        dispatch(setMes("something gone wrong"));
-      }
-
-      dispatch(setLoading(false));
-    }
+  const { fetchData } = useRequest();
+  const submitHandler = async (values) => {
+    await fetchData({
+      method: "post",
+      url: `${URLadr}/api/auth/login`,
+      data: values,
+      headers: { "Content-type": "application/json" },
+    });
 
     navg("/signin");
   };
+  const initialValues = {
+    email: "",
+    password: "",
+    role: "",
+  };
+
+  const formik: FormikProps<MyFormValues> = useFormik({
+    initialValues,
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email("invalid email")
+        .max(19, "email must be not more than 19 characters")
+        .required("enter email"),
+      password: Yup.string()
+        .min(2, "password must be more than 2 characters")
+        .required("enter password"),
+      role: Yup.string().required(),
+    }),
+    onSubmit: submitHandler,
+  });
+
   return (
     <section>
-      {loading ? "registeded" : "not registered"}
       <PageTitle title="Register" />
-      <form
-        className={st.form}
-        onSubmit={(event) => {
-          submitHandler(event);
-        }}
-      >
-        <div className={st.formControl}>
-          <input
-            className={st.input}
-            type="email"
-            placeholder="Email"
-            onChange={({ target }) => {
-              setEmail(target.value);
-            }}
-            value={email}
-            name="email"
-            required
-          />
-        </div>
-        <div className={st.formControl}>
-          <input
-            className={st.input}
-            type="password"
-            placeholder="Password"
-            onChange={({ target }) => {
-              setPassword(target.value);
-            }}
-            value={password}
-            name="password"
-            required
-          />
-        </div>
-        <div className={st.formControl}>
-          <input
-            className={st.input}
-            type="text"
-            placeholder="Role"
-            onChange={({ target }) => {
-              setRole(target.value);
-            }}
-            value={role}
-            name="role"
-            required
-          />
-        </div>
-        <button type="submit" className={`mybutton ${st.submit}`}>
-          Submit
-        </button>
-      </form>
+      <Form submitHandler={formik.handleSubmit}>
+        <Input
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          type="email"
+          name="email"
+          placeholder="Email"
+          error={formik.errors.email}
+        />
+
+        <Input
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          type="password"
+          name="password"
+          placeholder="password"
+          error={formik.errors.password}
+        />
+
+        <Input
+          value={formik.values.role}
+          onChange={formik.handleChange}
+          type="text"
+          name="role"
+          placeholder="Role"
+          error={formik.errors.role}
+        />
+        <SubmitButton />
+      </Form>
     </section>
   );
 };

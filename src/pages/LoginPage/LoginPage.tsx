@@ -28,37 +28,17 @@ export const LoginPage = () => {
   const { setError } = useContext(ErrorContext);
   const { setIsLoading } = useContext(LoaderContext);
 
-  // const submitHandler = async (values) => {
-  //   try {
-  //     const resp = await axios.post(`${URLadr}/api/auth/login`, values);
-  //     setJwt(resp.data.jwt_token);
-
-  //     localStorage.setItem("jwt", resp.data.jwt_token);
-  //     setIsLoading(false);
-  //   } catch (error) {
-  //     if (error.response?.data?.message) {
-  //       setError(error.response.data.message);
-  //     } else {
-  //       setError("something gone wrong");
-  //     }
-  //     setIsLoading(false);
-  //   }
-  // };
-
-  const { fetchData, responseData } = useRequest();
+  const { fetchData } = useRequest();
   const submitHandler = async (values) => {
-    // e.preventDefault();
-    console.log("VALUES", values, fetchData);
-    await fetchData({
+    console.log("sumbit handler");
+    const resp = await fetchData({
       method: "post",
       url: `${URLadr}/api/auth/login`,
       data: values,
       headers: { "Content-type": "application/json" },
     });
-    console.log("jjaja", responseData.jwt_token);
-    setJwt(responseData.jwt_token);
-
-    localStorage.setItem("jwt", responseData.jwt_token);
+    console.log("resp", resp);
+    setJwt(resp.jwt_token);
   };
 
   const formik: FormikProps<MyFormValues> = useFormik({
