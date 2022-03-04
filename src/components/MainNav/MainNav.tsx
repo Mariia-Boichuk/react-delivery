@@ -1,15 +1,16 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import st from "./MainNav.module.css";
-import { useContext } from "react";
-import AuthContext from "../../context/AuthContextProvider";
 import { MY_PROFILE, SIGN_IN, REGISTER } from "../../utils/routes";
 import Cookies from "js-cookie";
-import { setToken } from "../../reduxFeatures/actions/index";
+import { setUserData } from "../../reduxFeatures/actions/index";
+import { useDispatch, useSelector } from "react-redux";
+import { State } from "../../reduxFeatures/reducers/reducer";
 
-const MainNav = () => {
+const MainNav: React.FC = () => {
   const navg = useNavigate();
-  const { user, setUser, setJwt } = useContext(AuthContext);
+  const user = useSelector((state: State) => state.auth.user);
+  const dispatch = useDispatch();
   return (
     <div className="wrapper">
       <nav>
@@ -74,9 +75,7 @@ const MainNav = () => {
                   className="mybutton"
                   onClick={(event) => {
                     event.preventDefault();
-                    setJwt("");
-                    setToken("");
-                    setUser(null);
+                    dispatch(setUserData(null));
                     Cookies.remove("jwt");
                     navg(SIGN_IN);
                   }}

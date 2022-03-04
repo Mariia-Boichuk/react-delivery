@@ -22,8 +22,8 @@ const initialValues = {
 
 export const LoginPage: React.FC = () => {
   const dispatch = useDispatch();
-
   const { fetchData } = useRequest();
+
   const submitHandler = async (values) => {
     const resp = await fetchData({
       method: "post",
@@ -32,10 +32,8 @@ export const LoginPage: React.FC = () => {
       headers: { "Content-type": "application/json" },
     });
 
-    dispatch(setToken(resp.jwt_token));
-    //setJwt(resp.jwt_token);
-
     Cookies.set("jwt", resp.jwt_token);
+    dispatch(setToken(resp.jwt_token));
   };
 
   const formik: FormikProps<MyFormValues> = useFormik({

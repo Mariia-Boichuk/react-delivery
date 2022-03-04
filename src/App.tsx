@@ -11,6 +11,7 @@ import { State } from "./reduxFeatures/reducers/reducer";
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const { fetchData } = useRequest();
+  const jwt = useSelector((state: State) => state.auth.jwt);
 
   const getMe = useCallback(async (jwt) => {
     const resp = await fetchData({
@@ -28,7 +29,7 @@ const App: React.FC = () => {
     if (Cookies.get("jwt")) {
       getMe(Cookies.get("jwt"));
     }
-  }, []);
+  }, [jwt]);
 
   return (
     <div>

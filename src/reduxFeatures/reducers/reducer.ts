@@ -14,7 +14,7 @@ export interface State {
   request: { loading: boolean; message: string; status: StatusType };
   auth: {
     jwt: string;
-    user: UserI;
+    user: UserI | null;
   };
 }
 
