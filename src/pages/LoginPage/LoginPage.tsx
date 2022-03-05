@@ -15,6 +15,11 @@ interface MyFormValues {
   password: string;
 }
 
+type LoginResponseData = {
+  jwt_token: string;
+  message: string;
+};
+
 const initialValues = {
   email: "",
   password: "",
@@ -24,16 +29,16 @@ export const LoginPage: React.FC = () => {
   const dispatch = useDispatch();
   const { fetchData } = useRequest();
 
-  const submitHandler = async (values) => {
-    const resp = await fetchData({
+  const submitHandler = async (values: MyFormValues) => {
+    const resp: LoginResponseData = await fetchData({
       method: "post",
       url: `${URLadr}/api/auth/login`,
       data: values,
       headers: { "Content-type": "application/json" },
     });
 
-    Cookies.set("jwt", resp.jwt_token);
     dispatch(setToken(resp.jwt_token));
+    Cookies.set("jwt", resp.jwt_token);
   };
 
   const formik: FormikProps<MyFormValues> = useFormik({

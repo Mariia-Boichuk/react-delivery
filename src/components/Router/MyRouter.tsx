@@ -1,28 +1,25 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { useContext } from "react";
-import AuthContext from "../../context/AuthContextProvider";
 import ProfilePage from "../../pages/ProfilePage/ProfilePage";
 import { LoginPage } from "../../pages/LoginPage/LoginPage";
 import { Registration } from "../../pages/Registration/Registration";
 import { MY_PROFILE, SIGN_IN, REGISTER } from "../../utils/routes";
 import { useSelector } from "react-redux";
 import { PendingView } from "../PendingView/PendingView";
-
 import Modal from "../Modal/Modal";
 import { State } from "../../reduxFeatures/reducers/reducer";
 
 const MyRouter: React.FC = () => {
-  const loading = useSelector<State>((state) => state.request.loading);
-  const status = useSelector<State>((state) => state.request.status);
-  const mes = useSelector<State>((state) => state.request.message);
-  const user = useSelector<State>((state) => state.auth.user);
+  const { loading, message, status } = useSelector(
+    (state: State) => state.request
+  );
+  const user = useSelector((state: State) => state.auth.user);
 
   return (
     <>
       {status === "error" ? (
         <>
-          <Modal mes={mes} />
+          <Modal mes={message} />
         </>
       ) : loading ? (
         <>

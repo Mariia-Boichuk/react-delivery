@@ -1,7 +1,7 @@
 import BelowHeader from "../BelowHeader/BelowHeader";
 import MainNav from "../MainNav/MainNav";
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <header>
       <MainNav />

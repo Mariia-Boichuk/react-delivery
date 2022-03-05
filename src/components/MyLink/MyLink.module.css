@@ -1,11 +1,4 @@
-.navListHeader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-/* .navItemHeader {
+.navItemHeader {
   margin-right: 20px;
   margin-left: 20px;
   color: #333333;
@@ -17,4 +10,4 @@ a {
 .forActive {
   color: darkgreen;
   font-weight: bold;
-} */
+}

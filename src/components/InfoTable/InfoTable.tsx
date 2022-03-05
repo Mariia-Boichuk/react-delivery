@@ -1,7 +1,9 @@
 import React from "react";
 import st from "./InfoTable.module.css";
 
-const InfoTable = ({ children }) => {
+type InfoTableProps = { children: React.ReactNode };
+
+const InfoTable: React.FC<InfoTableProps> = ({ children }) => {
   return (
     <section>
       <table className={st.table}>

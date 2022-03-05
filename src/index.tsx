@@ -4,9 +4,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { AuthContextProvider } from "./context/AuthContextProvider";
-import { ErrorContextProvider } from "./context/ErrorContextProvider";
-import LoaderContextProvider from "./context/LoaderContextProvider";
 import { compose, createStore } from "redux";
 import allReducers from "./reduxFeatures/reducers";
 import { Provider } from "react-redux";
@@ -23,15 +20,9 @@ const myStore = createStore(allReducers, composeEnhancers());
 ReactDOM.render(
   <Provider store={myStore}>
     <React.StrictMode>
-      <LoaderContextProvider>
-        <ErrorContextProvider>
-          <AuthContextProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
-          </AuthContextProvider>
-        </ErrorContextProvider>
-      </LoaderContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </React.StrictMode>
   </Provider>,
   document.getElementById("root")

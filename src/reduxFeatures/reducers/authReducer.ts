@@ -4,6 +4,11 @@ export interface UserI {
   created_date: Date;
 }
 
+interface AuthState {
+  user: UserI | null;
+  jwt: string;
+}
+
 interface UserAction {
   type: string;
   payload: UserI | null;
@@ -15,7 +20,7 @@ interface JwtAction {
 }
 
 const authReducer = (
-  state = { user: null, jwt: "" },
+  state: AuthState = { user: null, jwt: "" },
   action: JwtAction | UserAction
 ) => {
   switch (action.type) {

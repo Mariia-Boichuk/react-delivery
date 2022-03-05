@@ -17,7 +17,8 @@ interface MyFormValues {
 export const Registration: React.FC = () => {
   const navg = useNavigate();
   const { fetchData } = useRequest();
-  const submitHandler = async (values) => {
+
+  const submitHandler = async (values: MyFormValues) => {
     await fetchData({
       method: "post",
       url: `${URLadr}/api/auth/login`,

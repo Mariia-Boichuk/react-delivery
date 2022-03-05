@@ -6,74 +6,40 @@ import Cookies from "js-cookie";
 import { setUserData } from "../../reduxFeatures/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import { State } from "../../reduxFeatures/reducers/reducer";
+import WidthWrapper from "../WidthWrapper/WidthWrapper";
+import MyLink from "../MyLink/MyLink";
 
 const MainNav: React.FC = () => {
   const navg = useNavigate();
   const user = useSelector((state: State) => state.auth.user);
   const dispatch = useDispatch();
+
   return (
-    <div className="wrapper">
+    <WidthWrapper>
       <nav>
         <ul className={st.navListHeader}>
           {!user && (
-            <li className={st.navItemHeader}>
-              <NavLink
-                to={SIGN_IN}
-                className={({ isActive }) => (isActive ? st.forActive : "")}
-              >
-                Login
-              </NavLink>
-            </li>
-          )}
-          {!user && (
             <>
-              <li className={st.navItemHeader}>
-                <NavLink
-                  to={REGISTER}
-                  className={({ isActive }) => (isActive ? st.forActive : "")}
-                >
-                  Signup
-                </NavLink>
-              </li>
+              <MyLink to={SIGN_IN} text="Login" />
+              <MyLink to={REGISTER} text="Register" />
             </>
           )}
           {user?.role === "SHIPPER" && (
-            <li className={st.navItemHeader}>
-              <NavLink
-                className={({ isActive }) => (isActive ? st.forActive : "")}
-                to="/new/load"
-              >
-                New load
-              </NavLink>
-            </li>
+            <MyLink to={"new/load"} text="new load" />
           )}
           {user?.role === "DRIVER" && (
-            <li className={st.navItemHeader}>
-              <NavLink
-                to="/new/truck"
-                className={({ isActive }) => (isActive ? st.forActive : "")}
-              >
-                New truck
-              </NavLink>
-            </li>
+            <MyLink to={"new/truck"} text="new truck" />
           )}
           {user && (
             <>
-              <li className={st.navItemHeader}>
-                <NavLink
-                  to={MY_PROFILE}
-                  className={({ isActive }) => (isActive ? st.forActive : "")}
-                >
-                  Profile
-                </NavLink>
-              </li>
+              <MyLink to={MY_PROFILE} text="Profile" />
 
               <li className={st.navItemHeader}>hello! {user?.email}</li>
 
               <li className={st.navItemHeader}>
                 <button
                   className="mybutton"
-                  onClick={(event) => {
+                  onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
                     event.preventDefault();
                     dispatch(setUserData(null));
                     Cookies.remove("jwt");
@@ -87,7 +53,7 @@ const MainNav: React.FC = () => {
           )}
         </ul>
       </nav>
-    </div>
+    </WidthWrapper>
   );
 };
 

@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
 import InfoTable from "../../components/InfoTable/InfoTable";
 import InfoRow from "../../components/InfoRow/InfoRow";
 import PageTitle from "../../components/PageTitle/PageTitle";
+import { State } from "../../reduxFeatures/reducers/reducer";
+import { useSelector } from "react-redux";
 
 const ProfilePage = () => {
-  const { user } = useContext(AuthContext);
+  const user = useSelector((state: State) => state.auth.user);
 
   return (
     <>

@@ -1,25 +1,20 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import st from "../MainNav/MainNav.module.css";
 import ownst from "./SubNav.module.css";
+import WidthWrapper from "../WidthWrapper/WidthWrapper";
+import MyLink from "../MyLink/MyLink";
 
 const SubNav = () => {
   return (
-    <div className="wrapper">
+    <WidthWrapper>
       <nav className={ownst.subnav}>
         <ul className={st.navListHeader}>
-          <li className={st.navItemHeader}>
-            <NavLink to="/treate">shipped loads</NavLink>
-          </li>
-          <li className={st.navItemHeader}>
-            <NavLink to="/truate">posted loads</NavLink>
-          </li>
-          <li className={st.navItemHeader}>
-            <NavLink to="/trucks">active loads</NavLink>
-          </li>
+          <MyLink to={"newloads"} text="new loads" />
+          <MyLink to={"postedloads"} text="posted loads" />
+          <MyLink to={"activeloads"} text="active loads" />
         </ul>
       </nav>
-    </div>
+    </WidthWrapper>
   );
 };
 

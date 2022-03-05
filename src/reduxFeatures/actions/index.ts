@@ -22,6 +22,12 @@ export const setStatus = (newStatus: StatusType) => {
   };
 };
 
+export const clearStatus = () => {
+  return {
+    type: "CLEAR_STATUS",
+  };
+};
+
 export const setUserData = (user: UserI) => {
   return {
     type: "SET_USER",

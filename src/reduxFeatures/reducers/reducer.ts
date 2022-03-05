@@ -7,19 +7,23 @@ export enum StatusType {
   error = "error",
   success = "success",
   warning = "warning",
-  noStatus = "noStatus",
 }
 
+interface RequestI {
+  loading: boolean;
+  message: string;
+  status?: StatusType;
+}
 export interface State {
-  request: { loading: boolean; message: string; status: StatusType };
   auth: {
     jwt: string;
     user: UserI | null;
   };
+  request: RequestI;
 }
 
 const requestReducer = (
-  state = { loading: false, status: StatusType.noStatus, message: "" },
+  state: RequestI = { loading: false, message: "" },
   action: ActionSet
 ) => {
   switch (action.type) {
@@ -28,7 +32,9 @@ const requestReducer = (
 
     case "SET_STATUS":
       return { ...state, status: action.payload.newStatus };
-
+    case "CLEAR_STATUS":
+      const { status, ...fields } = state;
+      return { ...fields };
     case "SET_LOADING":
       return { ...state, loading: action.payload.isLoading };
 

@@ -1,12 +1,13 @@
 import React from "react";
 import st from "./BelowHeader.module.css";
 import SubNav from "../SubNav/SubNav";
+import WidthWrapper from "../WidthWrapper/WidthWrapper";
 
-const BelowHeader = () => {
+const BelowHeader: React.FC = () => {
   return (
     <div className={st.white}>
       <div className={st.belowHeader}>
-        <div className="wrapper">
+        <WidthWrapper>
           <div className={st.belowHeaderTop}>
             <div className={st.logo}>
               <span className={st.logoImg}></span>
@@ -16,7 +17,7 @@ const BelowHeader = () => {
               <span className={st.info}> 394034-4994-77</span>
             </div>
           </div>
-        </div>
+        </WidthWrapper>
         <hr className={st.hr} />
         <SubNav />
       </div>
