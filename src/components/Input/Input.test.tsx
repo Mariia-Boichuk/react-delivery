@@ -16,18 +16,3 @@ test("renders error text", () => {
   const linkElement = screen.getByText(/invalid email/i);
   expect(linkElement).toBeInTheDocument();
 });
-
-test("renders  text", () => {
-  render(
-    <Input
-      value="123"
-      name="email"
-      placeholder="email"
-      type="email"
-      error={"invalid email"}
-      onChange={() => {}}
-    />
-  );
-  const linkElement = screen.getByRole("input");
-  expect(linkElement).toBeInTheDocument();
-});
