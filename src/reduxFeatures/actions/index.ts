@@ -34,10 +34,3 @@ export const setUserData = (user: UserI) => {
     payload: user,
   };
 };
-
-export const setToken = (jwt: string) => {
-  return {
-    type: "SET_JWT",
-    payload: jwt,
-  };
-};

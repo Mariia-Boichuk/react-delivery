@@ -4,17 +4,20 @@ import { useCallback, useEffect } from "react";
 import { URLadr } from "./utils/consts";
 import useRequest from "./utils/useRequest";
 import Cookies from "js-cookie";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUserData } from "./reduxFeatures/actions/index";
-import { State } from "./reduxFeatures/reducers/reducer";
+import { UserI } from "./reduxFeatures/reducers/authReducer";
+
+export type MeResponseData = {
+  user: UserI;
+};
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const { fetchData } = useRequest();
-  const jwt = useSelector((state: State) => state.auth.jwt);
 
   const getMe = useCallback(async (jwt) => {
-    const resp = await fetchData({
+    const resp = await fetchData<MeResponseData>({
       method: "get",
       url: `${URLadr}/api/users/me`,
       headers: {
@@ -29,7 +32,7 @@ const App: React.FC = () => {
     if (Cookies.get("jwt")) {
       getMe(Cookies.get("jwt"));
     }
-  }, [jwt]);
+  }, []);
 
   return (
     <div>

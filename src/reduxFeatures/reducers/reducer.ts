@@ -32,9 +32,11 @@ const requestReducer = (
 
     case "SET_STATUS":
       return { ...state, status: action.payload.newStatus };
+
     case "CLEAR_STATUS":
       const { status, ...fields } = state;
       return { ...fields };
+
     case "SET_LOADING":
       return { ...state, loading: action.payload.isLoading };
 

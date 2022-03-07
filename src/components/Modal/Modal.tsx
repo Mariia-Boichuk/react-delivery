@@ -3,8 +3,7 @@ import { createPortal } from "react-dom";
 import st from "./Modal.module.css";
 import { useDispatch } from "react-redux";
 import { setMes } from "../../reduxFeatures/actions";
-import { setStatus, clearStatus } from "../../reduxFeatures/actions/index";
-import { StatusType } from "../../reduxFeatures/reducers/reducer";
+import { clearStatus } from "../../reduxFeatures/actions/index";
 
 type ModalProps = {
   mes: string;

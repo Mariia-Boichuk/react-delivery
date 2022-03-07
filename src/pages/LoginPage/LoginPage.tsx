@@ -7,8 +7,9 @@ import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import * as Yup from "yup";
 import useRequest from "../../utils/useRequest";
 import Cookies from "js-cookie";
-import { setToken } from "../../reduxFeatures/actions/index";
+import { setUserData } from "../../reduxFeatures/actions/index";
 import { useDispatch } from "react-redux";
+import { MeResponseData } from "../../App";
 
 interface MyFormValues {
   email: string;
@@ -30,15 +31,24 @@ export const LoginPage: React.FC = () => {
   const { fetchData } = useRequest();
 
   const submitHandler = async (values: MyFormValues) => {
-    const resp: LoginResponseData = await fetchData({
+    const resp = await fetchData<LoginResponseData>({
       method: "post",
       url: `${URLadr}/api/auth/login`,
       data: values,
       headers: { "Content-type": "application/json" },
     });
 
-    dispatch(setToken(resp.jwt_token));
     Cookies.set("jwt", resp.jwt_token);
+    const respUser = await fetchData<MeResponseData>({
+      method: "get",
+      url: `${URLadr}/api/users/me`,
+      headers: {
+        Authorization: `Bearer ${resp.jwt_token}`,
+        "Content-type": "application/json",
+      },
+    });
+
+    dispatch(setUserData(respUser.user));
   };
 
   const formik: FormikProps<MyFormValues> = useFormik({

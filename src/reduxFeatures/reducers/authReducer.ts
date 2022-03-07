@@ -27,9 +27,6 @@ const authReducer = (
     case "SET_USER":
       return { ...state, user: action.payload };
 
-    case "SET_JWT":
-      return { ...state, jwt: action.payload };
-
     default:
       return state;
   }
