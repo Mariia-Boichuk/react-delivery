@@ -5,7 +5,7 @@ import spinner from "./loader.svg";
 export const PendingView = () => {
   return (
     <div className={st.container}>
-      <img src={spinner} alt="truck" />
+      <img src={spinner} alt="spinner" />
     </div>
   );
 };

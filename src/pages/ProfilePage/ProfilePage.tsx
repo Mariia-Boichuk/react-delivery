@@ -5,10 +5,10 @@ import { State } from "../../reduxFeatures/reducers/reducer";
 import { useSelector } from "react-redux";
 
 const ProfilePage = () => {
-  const user = useSelector((state: State) => state.auth.user);
+  const { user } = useSelector((state: State) => state.auth);
 
   return (
-    <>
+    <section>
       <PageTitle title="profile info" />
       <InfoTable>
         <InfoRow caption="Email" info={user.email} />
@@ -18,7 +18,7 @@ const ProfilePage = () => {
           info={new Date(user.created_date).toLocaleString()}
         />
       </InfoTable>
-    </>
+    </section>
   );
 };
 

@@ -14,14 +14,11 @@ interface UserAction {
   payload: UserI | null;
 }
 
-interface JwtAction {
-  type: string;
-  payload: string;
-}
+
 
 const authReducer = (
   state: AuthState = { user: null, jwt: "" },
-  action: JwtAction | UserAction
+  action:  UserAction
 ) => {
   switch (action.type) {
     case "SET_USER":

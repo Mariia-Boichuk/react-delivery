@@ -9,7 +9,7 @@ test("renders error text", () => {
       name="email"
       placeholder="email"
       type="email"
-      error={"invalid email"}
+      error="invalid email"
       onChange={() => {}}
     />
   );

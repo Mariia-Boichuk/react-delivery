@@ -1,8 +1,29 @@
 import { UserI } from "./authReducer";
+
 export type ActionSet = {
   type: string;
   payload?: { message?: string; isLoading?: boolean; newStatus?: StatusType };
 };
+
+interface StatusAction {
+  type: string;
+  payload: { newStatus: StatusType };
+}
+
+interface MessageAction {
+  type: string;
+  payload: { message: string };
+}
+
+interface LoadingAction {
+  type: string;
+  payload: { isLoading: boolean };
+}
+
+interface ClearAction {
+  type: string;
+}
+
 export enum StatusType {
   error = "error",
   success = "success",
@@ -24,7 +45,7 @@ export interface State {
 
 const requestReducer = (
   state: RequestI = { loading: false, message: "" },
-  action: ActionSet
+  action: ActionSet //MessageAction | StatusAction | LoadingAction | ClearAction
 ) => {
   switch (action.type) {
     case "SET_MESSAGE":

@@ -50,17 +50,3 @@ li {
 .btn {
   cursor: pointer;
 }
-
-.mybutton {
-  border-radius: 20px;
-  border: 3px solid #66c05d;
-  padding: 10px 15px;
-  background-color: transparent;
-  font-size: inherit;
-  cursor: pointer;
-}
-
-.mybutton:hover {
-  background-color: green;
-  opacity: 0.5;
-}

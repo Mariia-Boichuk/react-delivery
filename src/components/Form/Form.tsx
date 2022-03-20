@@ -8,7 +8,7 @@ type FormProps = {
 
 const Form: React.FC<FormProps> = ({ submitHandler, children }) => {
   return (
-    <form className={st.form} onSubmit={submitHandler}>
+    <form className={st.form} onSubmit={submitHandler} data-testid="formLog">
       {children}
     </form>
   );

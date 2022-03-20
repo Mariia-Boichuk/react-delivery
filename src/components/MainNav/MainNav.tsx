@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import st from "./MainNav.module.css";
 import { MY_PROFILE, SIGN_IN, REGISTER } from "../../utils/routes";
 import Cookies from "js-cookie";
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { State } from "../../reduxFeatures/reducers/reducer";
 import WidthWrapper from "../WidthWrapper/WidthWrapper";
 import MyLink from "../MyLink/MyLink";
+import MyButton from "../MyButton/MyButton";
 
 const MainNav: React.FC = () => {
   const navg = useNavigate();
@@ -37,17 +38,15 @@ const MainNav: React.FC = () => {
               <li className={st.navItemHeader}>hello! {user?.email}</li>
 
               <li className={st.navItemHeader}>
-                <button
-                  className="mybutton"
+                <MyButton
+                  text="log out"
                   onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
                     event.preventDefault();
                     dispatch(setUserData(null));
                     Cookies.remove("jwt");
                     navg(SIGN_IN);
                   }}
-                >
-                  Logout
-                </button>
+                />
               </li>
             </>
           )}

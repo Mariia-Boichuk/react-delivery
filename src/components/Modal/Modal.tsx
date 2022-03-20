@@ -11,13 +11,17 @@ type ModalProps = {
 
 const Modal: React.FC<ModalProps> = ({ mes }) => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     const timer = setTimeout(() => {
       dispatch(setMes(""));
+
       dispatch(clearStatus());
     }, 3000);
+
     return () => clearTimeout(timer);
   });
+
   return createPortal(
     <div className={st.container}>
       <div className={st.modal}>

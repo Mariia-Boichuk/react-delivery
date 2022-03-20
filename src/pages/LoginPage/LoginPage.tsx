@@ -39,6 +39,7 @@ export const LoginPage: React.FC = () => {
     });
 
     Cookies.set("jwt", resp.jwt_token);
+
     const respUser = await fetchData<MeResponseData>({
       method: "get",
       url: `${URLadr}/api/users/me`,
@@ -68,6 +69,7 @@ export const LoginPage: React.FC = () => {
   return (
     <section>
       <PageTitle title="Log in" />
+
       <Form submitHandler={formik.handleSubmit}>
         <Input
           value={formik.values.email}
