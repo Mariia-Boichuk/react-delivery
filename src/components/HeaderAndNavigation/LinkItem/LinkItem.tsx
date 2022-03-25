@@ -1,13 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import st from "./MyLink.module.css";
+import st from "./LinkItem.module.css";
 
-type MyLinkProps = {
+type LinkItemProps = {
   to: string;
   text: string;
 };
 
-const MyLink: React.FC<MyLinkProps> = ({ to, text }) => {
+const LinkItem: React.FC<LinkItemProps> = ({ to, text }) => {
   return (
     <li className={st.navItemHeader}>
       <NavLink
@@ -20,4 +20,4 @@ const MyLink: React.FC<MyLinkProps> = ({ to, text }) => {
   );
 };
 
-export default MyLink;
+export default LinkItem;

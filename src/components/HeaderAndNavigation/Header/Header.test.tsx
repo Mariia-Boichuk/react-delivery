@@ -1,21 +1,18 @@
 import React from "react";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import { screen, render, fireEvent, getByText } from "@testing-library/react";
-
+import { screen, render, fireEvent } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import Header from "./Header";
-import allReducers from "../../reduxFeatures/reducers/index";
+import allReducers from "../../../reduxFeatures/reducers/index";
 
 const renderWithReduxAndRouter = (component) => {
   const store = createStore(allReducers);
-  return {
-    ...render(
-      <Provider store={store}>
-        <BrowserRouter> {component} </BrowserRouter>
-      </Provider>
-    ),
-  };
+  return render(
+    <Provider store={store}>
+      <BrowserRouter> {component} </BrowserRouter>
+    </Provider>
+  );
 };
 
 it("checks register link", () => {
@@ -31,7 +28,7 @@ it("checks register link active", () => {
   expect(signupLink).toHaveClass("forActive");
 });
 
-it("checks register link unactive after clicking on another", () => {
+it("checks register link unactive after clicking on another link", () => {
   renderWithReduxAndRouter(<Header />);
   const signupLink = screen.getByText(/register/i);
   const loginLink = screen.getByText(/login/i);

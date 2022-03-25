@@ -15,7 +15,6 @@ const Modal: React.FC<ModalProps> = ({ mes }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       dispatch(setMes(""));
-
       dispatch(clearStatus());
     }, 3000);
 

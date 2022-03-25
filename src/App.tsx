@@ -1,4 +1,3 @@
-import Header from "./components/Header/Header";
 import MyRouter from "./components/Router/MyRouter";
 import { useCallback, useEffect } from "react";
 import { URLadr } from "./utils/consts";
@@ -7,6 +6,7 @@ import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { setUserData } from "./reduxFeatures/actions/index";
 import { UserI } from "./reduxFeatures/reducers/authReducer";
+import Header from "./components/HeaderAndNavigation/Header/Header";
 
 export type MeResponseData = {
   user: UserI;

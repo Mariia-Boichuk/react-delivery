@@ -1,15 +1,11 @@
-import React from "react";
-import { createStore } from "redux";
-import { Provider, useSelector } from "react-redux";
-import { screen, render, fireEvent, getByText } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import Header from "../components/Header/Header";
-import allReducers from "./reducers/index";
-import { BrowserRouter } from "react-router-dom";
-import { LoginPage } from "../pages/LoginPage/LoginPage";
+import { Provider } from "react-redux";
 import App from "../App";
-import { setUserData } from "./actions/index";
-import { State } from "./reducers/reducer";
+import { render, fireEvent, screen } from "@testing-library/react";
+import { createTestStore } from "../utils/test";
+import { BrowserRouter } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
+import { createStore } from "redux";
+import allReducers from "./reducers/index";
 
 const renderWithReduxAndRouter = (component) => {
   const store = createStore(allReducers);
@@ -20,49 +16,77 @@ const renderWithReduxAndRouter = (component) => {
   );
 };
 
-// describe("Redux testing", () => {
-//   it("checks login", () => {
-//     const store = createStore(allReducers);
+let store;
+describe("testing login page", () => {
+  beforeEach(() => {
+    store = createTestStore();
+  });
 
-//     render(
-//       <Provider store={store}>
-//         <BrowserRouter>
-//           <App />
-//         </BrowserRouter>
-//       </Provider>
-//     );
+  it("renders log in title", async () => {
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    );
+    await screen.findByText("Log in");
+  });
 
-//     setUserData({
-//       email: "nas@mail.ru",
-//       role: "SHIPPER",
-//       created_date: new Date(),
-//     });
-//     const header = screen.getByText(/profile/i);
-//     expect(header).toBeInTheDocument();
-//   });
+  it("renders error text no email", async () => {
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    );
 
-//   it("checks user", () => {
-//     renderWithReduxAndRouter(<App />);
-//     const header = screen.getByText("Login");
-//     expect(header).toHaveTextContent("Login");
-//   });
-// });
+    const subm = await screen.findByText("Submit");
+    fireEvent.click(subm);
+    await screen.findByText(/enter email/i);
+  });
 
-// describe("Redux testing 2", () => {
-//   it("checks summit form", () => {
-//     renderWithReduxAndRouter(<App />);
-//     const submit = screen.getByText("Submit");
-//     const inputEmail: HTMLInputElement = screen.getByPlaceholderText("Email");
-//     const inputPass: HTMLInputElement = screen.getByPlaceholderText("password");
-//     // userEvent.type(inputEmail, "nastyaemail.ru");
-//     fireEvent.blur(inputEmail);
-//     // fireEvent.change(inputPass, { target: { value: "12345" } });
-//     userEvent.click(submit);
-//     expect(screen.getByText(/invalid/)).toBeInTheDocument();
-//   });
-// });
+  it("invalid email renders", async () => {
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    );
 
-it("checks summit form", () => {
+    const subm = await screen.findByText("Submit");
+    fireEvent.click(subm);
+    const inputEmail: HTMLInputElement = screen.getByPlaceholderText("Email");
+    userEvent.type(inputEmail, "nastyaemail.ru");
+    fireEvent.blur(inputEmail);
+    await screen.findByText(/invalid/i);
+  });
+
+  it("redux flow after sumbit should render spinner", async () => {
+    // Create a redux store
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    );
+
+    const inputEmail: HTMLInputElement = screen.getByPlaceholderText("Email");
+    const inputPass: HTMLInputElement = screen.getByPlaceholderText("password");
+    userEvent.type(inputEmail, "nasty@aemail.ru");
+    fireEvent.blur(inputEmail);
+    fireEvent.change(inputPass, { target: { value: "12345" } });
+
+    const subm = await screen.findByText("Submit");
+    fireEvent.click(subm);
+    await screen.findByAltText("spinner");
+  });
+});
+
+it("should render value in input", () => {
   renderWithReduxAndRouter(<App />);
   const inputEmail: HTMLInputElement = screen.getByPlaceholderText("Email");
   userEvent.type(inputEmail, "nastya@email.ru");

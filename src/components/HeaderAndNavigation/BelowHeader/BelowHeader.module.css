@@ -1,0 +1,20 @@
+.belowHeader {
+  background-color: #fff;
+}
+
+.belowHeaderTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0;
+}
+
+.info {
+  font-size: 16px;
+}
+
+.hr {
+  border: none;
+  background-color: #66c05d;
+  height: 2px;
+}
