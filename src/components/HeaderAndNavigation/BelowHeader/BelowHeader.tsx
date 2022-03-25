@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 
 const BelowHeader: React.FC = () => {
   const user = useSelector((state: State) => state.auth.user);
+
   return (
     <div className={st.white}>
       <div className={st.belowHeader}>

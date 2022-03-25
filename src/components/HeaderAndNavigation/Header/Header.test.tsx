@@ -18,6 +18,7 @@ const renderWithReduxAndRouter = (component) => {
 it("checks register link", () => {
   renderWithReduxAndRouter(<Header />);
   const signupLink = screen.getByText(/register/i);
+
   expect(signupLink).toBeInTheDocument();
 });
 
@@ -25,6 +26,7 @@ it("checks register link active", () => {
   renderWithReduxAndRouter(<Header />);
   const signupLink = screen.getByText(/register/i);
   fireEvent.click(signupLink);
+
   expect(signupLink).toHaveClass("forActive");
 });
 
@@ -33,7 +35,9 @@ it("checks register link unactive after clicking on another link", () => {
   const signupLink = screen.getByText(/register/i);
   const loginLink = screen.getByText(/login/i);
   fireEvent.click(signupLink);
+
   expect(signupLink).toHaveClass("forActive");
   fireEvent.click(loginLink);
+
   expect(signupLink).not.toHaveClass("forActive");
 });

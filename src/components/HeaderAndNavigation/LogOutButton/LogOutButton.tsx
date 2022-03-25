@@ -17,8 +17,10 @@ const LogOutButton: React.FC = () => {
         text="log out"
         onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
           event.preventDefault();
+
           dispatch(setUserData(null));
           Cookies.remove("jwt");
+
           navg(SIGN_IN);
         }}
       />
