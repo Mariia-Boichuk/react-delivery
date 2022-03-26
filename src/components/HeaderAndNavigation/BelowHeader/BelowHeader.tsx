@@ -5,6 +5,7 @@ import WidthWrapper from "../../WidthWrapper/WidthWrapper";
 import NavLogo from "../NavLogo/NavLogo";
 import { State } from "../../../reduxFeatures/reducers/reducer";
 import { useSelector } from "react-redux";
+import GreenHr from "../GreenHr/GreenHr";
 
 const BelowHeader: React.FC = () => {
   const user = useSelector((state: State) => state.auth.user);
@@ -20,7 +21,7 @@ const BelowHeader: React.FC = () => {
             </div>
           </div>
         </WidthWrapper>
-        <hr className={st.hr} />
+        <GreenHr />
         {user && <SubNav />}
       </div>
     </div>

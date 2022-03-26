@@ -21,15 +21,15 @@ const MyRouter: React.FC = () => {
     (state: State) => state.request
   );
   const user = useSelector((state: State) => state.auth.user);
-  if (loading) {
-    return (
-      <main>
-        <Routes>
-          <Route path="/*" element={<PendingView />} />
-        </Routes>
-      </main>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <main>
+  //       <Routes>
+  //         <Route path="/*" element={<PendingView />} />
+  //       </Routes>
+  //     </main>
+  //   );
+  // }
 
   if (status === "error") {
     return (
@@ -43,6 +43,7 @@ const MyRouter: React.FC = () => {
 
   return (
     <main>
+      {loading && <PendingView />}
       <Routes>
         {user ? (
           <>

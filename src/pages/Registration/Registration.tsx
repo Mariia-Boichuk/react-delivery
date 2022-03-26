@@ -21,7 +21,7 @@ export const Registration: React.FC = () => {
   const submitHandler = async (values: MyFormValues) => {
     await fetchData({
       method: "post",
-      url: `${URLadr}/api/auth/login`,
+      url: `${URLadr}/api/auth/register`,
       data: values,
       headers: { "Content-type": "application/json" },
     });
@@ -31,7 +31,7 @@ export const Registration: React.FC = () => {
   const initialValues = {
     email: "",
     password: "",
-    role: "",
+    role: "SHIPPER",
   };
 
   const formik: FormikProps<MyFormValues> = useFormik({
@@ -71,14 +71,31 @@ export const Registration: React.FC = () => {
           error={formik.errors.password}
         />
 
-        <Input
-          value={formik.values.role}
-          onChange={formik.handleChange}
-          type="text"
-          name="role"
-          placeholder="Role"
-          error={formik.errors.role}
-        />
+        <label htmlFor="email" style={{ display: "block" }}>
+          Role
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="role"
+            value="SHIPPER"
+            checked={formik.values.role === "SHIPPER"}
+            onChange={formik.handleChange}
+          />
+          SHIPPER
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="role"
+            value="DRIVER"
+            checked={formik.values.role === "DRIVER"}
+            onChange={formik.handleChange}
+          />
+          DRIVER
+        </label>
+
         <SubmitButton />
       </Form>
     </section>
