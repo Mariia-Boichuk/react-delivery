@@ -7,7 +7,7 @@ import {
   CREATE_LOAD,
 } from "../../../utils/routes";
 import { useSelector } from "react-redux";
-import { State } from "../../../reduxFeatures/reducers/reducer";
+import { State } from "../../../reduxFeatures/reducers/requestReducer";
 import WidthWrapper from "../../WidthWrapper/WidthWrapper";
 import LinkItem from "../LinkItem/LinkItem";
 import HeaderGreeting from "../HeaderGreeting/HeaderGreeting";
@@ -20,8 +20,8 @@ const MainNav: React.FC = () => {
   return (
     <WidthWrapper>
       <nav>
-        <ListOfNavlinks>
-          {!user ? (
+        <ListOfNavLinks>
+          {user ? (
             <>
               <LinkItem to={SIGN_IN} text="Login" />
               <LinkItem to={REGISTER} text="Register" />
@@ -40,7 +40,7 @@ const MainNav: React.FC = () => {
               <LogOutButton />
             </>
           )}
-        </ListOfNavlinks>
+        </ListOfNavLinks>
       </nav>
     </WidthWrapper>
   );

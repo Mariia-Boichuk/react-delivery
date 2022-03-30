@@ -1,5 +1,4 @@
-import { StatusType } from "../reducers/reducer";
-import { UserI } from "../reducers/authReducer";
+import { StatusType } from "../reducers/requestReducer";
 
 export const setLoading = (isLoading: boolean) => {
   return {
@@ -25,12 +24,5 @@ export const setStatus = (newStatus: StatusType) => {
 export const clearStatus = () => {
   return {
     type: "CLEAR_STATUS",
-  };
-};
-
-export const setUserData = (user: UserI) => {
-  return {
-    type: "SET_USER",
-    payload: user,
   };
 };

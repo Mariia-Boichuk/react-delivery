@@ -1,6 +1,10 @@
 import { useDispatch } from "react-redux";
-import { StatusType } from "../reduxFeatures/reducers/reducer";
-import { setStatus, setLoading, setMes } from "../reduxFeatures/actions/index";
+import { StatusType } from "../reduxFeatures/reducers/requestReducer";
+import {
+  setStatus,
+  setLoading,
+  setMes,
+} from "../reduxFeatures/actions/requestActions";
 import axios, { AxiosResponse, AxiosRequestConfig, AxiosError } from "axios";
 import { useCallback } from "react";
 

@@ -3,7 +3,7 @@ import st from "./BelowHeader.module.css";
 import SubNav from "../SubNav/SubNav";
 import WidthWrapper from "../../WidthWrapper/WidthWrapper";
 import NavLogo from "../NavLogo/NavLogo";
-import { State } from "../../../reduxFeatures/reducers/reducer";
+import { State } from "../../../reduxFeatures/reducers/requestReducer";
 import { useSelector } from "react-redux";
 import GreenHr from "../GreenHr/GreenHr";
 

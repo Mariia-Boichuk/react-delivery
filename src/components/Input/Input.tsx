@@ -4,6 +4,7 @@ import st from "./Input.module.css";
 
 type InputProps = {
   value: string;
+  refpr?: React.RefObject<HTMLInputElement>;
   name: string;
   type: string;
   placeholder: string;
@@ -18,6 +19,7 @@ const Input: React.FC<InputProps> = ({
   onChange,
   placeholder,
   error,
+  refpr,
 }) => {
   return (
     <div className={st.formControl}>
@@ -25,6 +27,7 @@ const Input: React.FC<InputProps> = ({
         type={type}
         value={value}
         name={name}
+        ref={refpr}
         className={st.input}
         placeholder={placeholder}
         onChange={onChange}

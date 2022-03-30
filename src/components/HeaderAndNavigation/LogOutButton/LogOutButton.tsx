@@ -1,11 +1,11 @@
 import React from "react";
 import st from "./LogOutButton.module.css";
 import MyButton from "../../MyButton/MyButton";
-import { setUserData } from "../../../reduxFeatures/actions/index";
 import Cookies from "js-cookie";
 import { SIGN_IN } from "../../../utils/routes";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { setUserData } from "../../../reduxFeatures/actions/authActions";
 
 const LogOutButton: React.FC = () => {
   const navg = useNavigate();

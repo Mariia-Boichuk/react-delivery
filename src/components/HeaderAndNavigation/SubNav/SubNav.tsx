@@ -13,11 +13,11 @@ const SubNav: React.FC = () => {
   return (
     <WidthWrapper>
       <nav className={ownst.subnav}>
-        <ListOfNavlinks>
+        <ListOfNavLinks>
           <LinkItem to={DRAFTED_LOADS} text="drafted loads" />
           <LinkItem to={POSTED_LOADS} text="posted loads" />
           <LinkItem to={SHIPPED_LOADS} text="shipped loads" />
-        </ListOfNavlinks>
+        </ListOfNavLinks>
       </nav>
     </WidthWrapper>
   );

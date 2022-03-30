@@ -14,11 +14,9 @@ interface UserAction {
   payload: UserI | null;
 }
 
-
-
 const authReducer = (
   state: AuthState = { user: null, jwt: "" },
-  action:  UserAction
+  action: UserAction
 ) => {
   switch (action.type) {
     case "SET_USER":

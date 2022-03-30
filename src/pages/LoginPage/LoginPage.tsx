@@ -7,9 +7,10 @@ import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import * as Yup from "yup";
 import useRequest from "../../utils/useRequest";
 import Cookies from "js-cookie";
-import { setUserData } from "../../reduxFeatures/actions/index";
 import { useDispatch } from "react-redux";
 import { MeResponseData } from "../../App";
+import { setUserData } from "../../reduxFeatures/actions/authActions";
+import { useRef, useEffect } from "react";
 
 interface MyFormValues {
   email: string;
@@ -27,8 +28,13 @@ const initialValues = {
 };
 
 export const LoginPage: React.FC = () => {
+  const emailInput = useRef(null);
   const dispatch = useDispatch();
   const { fetchData } = useRequest();
+
+  useEffect(() => {
+    emailInput.current.focus();
+  }, []);
 
   const submitHandler = async (values: MyFormValues) => {
     const resp = await fetchData<LoginResponseData>({
@@ -72,6 +78,7 @@ export const LoginPage: React.FC = () => {
 
       <Form submitHandler={formik.handleSubmit}>
         <Input
+          refpr={emailInput}
           value={formik.values.email}
           onChange={formik.handleChange}
           type="email"

@@ -4,9 +4,10 @@ import { URLadr } from "./utils/consts";
 import useRequest from "./utils/useRequest";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
-import { setUserData } from "./reduxFeatures/actions/index";
+
 import { UserI } from "./reduxFeatures/reducers/authReducer";
 import Header from "./components/HeaderAndNavigation/Header/Header";
+import { setUserData } from "./reduxFeatures/actions/authActions";
 
 export type MeResponseData = {
   user: UserI;
