@@ -1,13 +1,13 @@
 import MyRouter from "./components/Router/MyRouter";
 import { useCallback, useEffect } from "react";
-import { URLadr } from "./utils/consts";
 import useRequest from "./utils/useRequest";
 import Cookies from "js-cookie";
-import { useDispatch } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 import { UserI } from "./reduxFeatures/reducers/authReducer";
 import Header from "./components/HeaderAndNavigation/Header/Header";
+import { State } from "./reduxFeatures/reducers/requestReducer";
 import { setUserData } from "./reduxFeatures/actions/authActions";
+import { URL_STRING } from "./utils/consts";
 
 export type MeResponseData = {
   user: UserI;
@@ -17,10 +17,12 @@ const App: React.FC = () => {
   const dispatch = useDispatch();
   const { fetchData } = useRequest();
 
+  const user = useSelector((state: State) => state.auth.user);
+
   const getMe = useCallback(async (jwt) => {
     const resp = await fetchData<MeResponseData>({
       method: "get",
-      url: `${URLadr}/api/users/me`,
+      url: `${URL_STRING}/api/users/me`,
       headers: {
         Authorization: `Bearer ${jwt}`,
         "Content-type": "application/json",
@@ -37,7 +39,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <Header />
+      <Header dispatch={dispatch} user={user} />
       <MyRouter />
     </div>
   );

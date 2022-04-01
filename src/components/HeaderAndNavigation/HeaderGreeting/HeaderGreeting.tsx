@@ -1,12 +1,18 @@
 import React from "react";
-import st from "./HeaderGreeting.module.css";
-import { useSelector } from "react-redux";
-import { State } from "../../../reduxFeatures/reducers/requestReducer";
+import styles from "./HeaderGreeting.module.css";
+import CommonText from "../../CommonText/CommonText";
+import { UserI } from "../../../reduxFeatures/reducers/authReducer";
 
-const HeaderGreeting: React.FC = () => {
-  const user = useSelector((state: State) => state.auth.user);
-  <Text>hello! {user?.email}</Text>;
-  return <div className={st.navItemHeader}>hello! {user?.email}</div>;
+type IProps = {
+  user: UserI;
+};
+
+const HeaderGreeting: React.FC<IProps> = ({ user }) => {
+  return (
+    <div className={styles.navItemHeader}>
+      <CommonText>hello! {user?.email}</CommonText>
+    </div>
+  );
 };
 
 export default HeaderGreeting;

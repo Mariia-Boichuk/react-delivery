@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch } from "react";
 import {
   MY_PROFILE,
   SIGN_IN,
@@ -6,27 +6,24 @@ import {
   CREATE_TRUCK,
   CREATE_LOAD,
 } from "../../../utils/routes";
-import { useSelector } from "react-redux";
-import { State } from "../../../reduxFeatures/reducers/requestReducer";
 import WidthWrapper from "../../WidthWrapper/WidthWrapper";
 import LinkItem from "../LinkItem/LinkItem";
 import HeaderGreeting from "../HeaderGreeting/HeaderGreeting";
 import LogOutButton from "../LogOutButton/LogOutButton";
-import ListOfNavlinks from "../ListOfNavlinks/ListOfNavlinks";
+import ListOfNavLinks from "../ListOfNavLinks/ListOfNaLinks";
+import { UserI } from "../../../reduxFeatures/reducers/authReducer";
 
-const MainNav: React.FC = () => {
-  const user = useSelector((state: State) => state.auth.user);
+type IProps = {
+  user: UserI;
+  dispatch: Dispatch<any>;
+};
 
+const MainNav: React.FC<IProps> = ({ user, dispatch }) => {
   return (
     <WidthWrapper>
       <nav>
         <ListOfNavLinks>
           {user ? (
-            <>
-              <LinkItem to={SIGN_IN} text="Login" />
-              <LinkItem to={REGISTER} text="Register" />
-            </>
-          ) : (
             <>
               {user?.role === "SHIPPER" && (
                 <LinkItem to={CREATE_LOAD} text="new load" />
@@ -36,8 +33,13 @@ const MainNav: React.FC = () => {
               )}
               <LinkItem to={MY_PROFILE} text="Profile" />
 
-              <HeaderGreeting />
-              <LogOutButton />
+              <HeaderGreeting user={user} />
+              <LogOutButton dispatch={dispatch} />
+            </>
+          ) : (
+            <>
+              <LinkItem to={SIGN_IN} text="Login" />
+              <LinkItem to={REGISTER} text="Register" />
             </>
           )}
         </ListOfNavLinks>

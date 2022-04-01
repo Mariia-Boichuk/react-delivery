@@ -1,5 +1,5 @@
 import React from "react";
-import ownst from "./SubNav.module.css";
+import styles from "./SubNav.module.css";
 import WidthWrapper from "../../WidthWrapper/WidthWrapper";
 import LinkItem from "../LinkItem/LinkItem";
 import {
@@ -7,12 +7,12 @@ import {
   SHIPPED_LOADS,
   DRAFTED_LOADS,
 } from "../../../utils/routes";
-import ListOfNavlinks from "../ListOfNavlinks/ListOfNavlinks";
+import ListOfNavLinks from "../ListOfNavLinks/ListOfNaLinks";
 
 const SubNav: React.FC = () => {
   return (
     <WidthWrapper>
-      <nav className={ownst.subnav}>
+      <nav className={styles.subnav}>
         <ListOfNavLinks>
           <LinkItem to={DRAFTED_LOADS} text="drafted loads" />
           <LinkItem to={POSTED_LOADS} text="posted loads" />
