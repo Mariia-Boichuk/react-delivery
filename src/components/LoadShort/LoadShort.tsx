@@ -1,7 +1,7 @@
 import React from "react";
 import InfoTable from "../InfoTable/InfoTable";
 import InfoRow from "../InfoRow/InfoRow";
-import GreenHr from "../HeaderAndNavigation/GreenHr/GreenHr";
+import GreenHr from "../GreenHr/GreenHr";
 import { Link } from "react-router-dom";
 import { ONE_LOAD } from "../../utils/routes";
 

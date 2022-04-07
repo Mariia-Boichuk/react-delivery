@@ -1,4 +1,4 @@
-import { URLadr } from "../../utils/consts";
+import { URL_STRING } from "../../utils/consts";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Input from "../../components/Input/Input";
 import Form from "../../components/Form/Form";
@@ -9,8 +9,9 @@ import useRequest from "../../utils/useRequest";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { MeResponseData } from "../../App";
-import { setUserData } from "../../reduxFeatures/actions/authActions";
+
 import { useRef, useEffect } from "react";
+import { setUserData } from "../../reduxFeatures/actions/authActions";
 
 interface MyFormValues {
   email: string;
@@ -39,7 +40,7 @@ export const LoginPage: React.FC = () => {
   const submitHandler = async (values: MyFormValues) => {
     const resp = await fetchData<LoginResponseData>({
       method: "post",
-      url: `${URLadr}/api/auth/login`,
+      url: `${URL_STRING}/api/auth/login`,
       data: values,
       headers: { "Content-type": "application/json" },
     });
@@ -48,7 +49,7 @@ export const LoginPage: React.FC = () => {
 
     const respUser = await fetchData<MeResponseData>({
       method: "get",
-      url: `${URLadr}/api/users/me`,
+      url: `${URL_STRING}/api/users/me`,
       headers: {
         Authorization: `Bearer ${resp.jwt_token}`,
         "Content-type": "application/json",

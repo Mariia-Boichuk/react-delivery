@@ -1,4 +1,4 @@
-import { URLadr } from "../../utils/consts";
+import { URL_STRING } from "../../utils/consts";
 import { useNavigate } from "react-router-dom";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { useFormik, FormikProps } from "formik";
@@ -7,8 +7,9 @@ import Input from "../../components/Input/Input";
 import Form from "../../components/Form/Form";
 import * as Yup from "yup";
 import SubmitButton from "../../components/SubmitButton/SubmitButton";
-import RadioGroupeRole from "../../components/RadioGroupeRole/RadioGroupeRole";
+
 import { useEffect, useRef } from "react";
+import RadioGroupeRole from "../../components/RadioGroupeRole/RadioGroupeRole";
 
 interface MyFormValues {
   email: string;
@@ -27,7 +28,7 @@ export const Registration: React.FC = () => {
   const submitHandler = async (values: MyFormValues) => {
     await fetchData({
       method: "post",
-      url: `${URLadr}/api/auth/register`,
+      url: `${URL_STRING}/api/auth/register`,
       data: values,
       headers: { "Content-type": "application/json" },
     });
