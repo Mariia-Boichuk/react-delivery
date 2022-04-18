@@ -7,10 +7,10 @@ import { useNavigate } from "react-router-dom";
 import { UserType } from "../../../reduxFeatures/reducers/authReducer";
 
 type LogOutButtonProps = {
-  dispatchSetUserData: (param: null | UserType) => void;
+  setUserData: (param: null | UserType) => void;
 };
 
-const LogOutButton: React.FC<LogOutButtonProps> = ({ dispatchSetUserData }) => {
+const LogOutButton: React.FC<LogOutButtonProps> = ({ setUserData }) => {
   const redirect = useNavigate();
 
   return (
@@ -20,7 +20,7 @@ const LogOutButton: React.FC<LogOutButtonProps> = ({ dispatchSetUserData }) => {
         onClick={(event) => {
           event.preventDefault();
 
-          dispatchSetUserData(null);
+          setUserData(null);
 
           Cookies.remove("jwt");
 

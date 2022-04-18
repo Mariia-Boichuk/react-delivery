@@ -19,7 +19,7 @@ const App: React.FC = () => {
 
   const user = useSelector((state: State) => state.auth.user);
 
-  const dispatchSetUserData = (param) => {
+  const setUserData = (param) => {
     dispatch(setUserData(param));
   };
 
@@ -43,7 +43,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <Header dispatchSetUserData={dispatchSetUserData} user={user} />
+      <Header setUserData={setUserData} user={user} />
       <MyRouter />
     </div>
   );

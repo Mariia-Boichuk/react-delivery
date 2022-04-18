@@ -4,13 +4,13 @@ import { UserType } from "../../../reduxFeatures/reducers/authReducer";
 
 type HeaderProps = {
   user: UserType;
-  dispatchSetUserData: (param: null | UserType) => void;
+  setUserData: (param: null | UserType) => void;
 };
 
-const Header: React.FC<HeaderProps> = ({ user, dispatchSetUserData }) => {
+const Header: React.FC<HeaderProps> = ({ user, setUserData }) => {
   return (
     <header>
-      <MainNav user={user} dispatchSetUserData={dispatchSetUserData} />
+      <MainNav user={user} setUserData={setUserData} />
       <BelowHeader user={user} />
     </header>
   );
