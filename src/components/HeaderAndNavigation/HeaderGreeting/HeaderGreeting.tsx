@@ -1,16 +1,16 @@
 import React from "react";
 import styles from "./HeaderGreeting.module.css";
-import CommonText from "../../CommonText/CommonText";
-import { UserI } from "../../../reduxFeatures/reducers/authReducer";
+import Text from "../../Text/Text";
+import { UserType } from "../../../reduxFeatures/reducers/authReducer";
 
-type IProps = {
-  user: UserI;
+type HeaderGreetingProps = {
+  user: UserType;
 };
 
-const HeaderGreeting: React.FC<IProps> = ({ user }) => {
+const HeaderGreeting: React.FC<HeaderGreetingProps> = ({ user }) => {
   return (
     <div className={styles.navItemHeader}>
-      <CommonText>hello! {user?.email}</CommonText>
+      <Text>hello! {user?.email}</Text>
     </div>
   );
 };

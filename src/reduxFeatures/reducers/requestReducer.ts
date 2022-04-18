@@ -1,4 +1,4 @@
-import { UserI } from "./authReducer";
+import { UserType } from "./authReducer";
 
 export type ActionSet = {
   type: string;
@@ -38,7 +38,7 @@ interface RequestI {
 export interface State {
   auth: {
     jwt: string;
-    user: UserI | null;
+    user: UserType | null;
   };
   request: RequestI;
 }

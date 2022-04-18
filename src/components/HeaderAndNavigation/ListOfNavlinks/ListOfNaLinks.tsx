@@ -1,6 +1,10 @@
 import styles from "./ListOfNavLinks.module.css";
 
-const ListOfNavLinks: React.FC = ({ children }) => {
+type ListOfNavLinksProps = {
+  children: React.ReactNode;
+};
+
+const ListOfNavLinks: React.FC<ListOfNavLinksProps> = ({ children }) => {
   return <ul className={styles.navListHeader}>{children}</ul>;
 };
 

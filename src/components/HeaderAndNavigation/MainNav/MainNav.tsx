@@ -1,4 +1,3 @@
-import React, { Dispatch } from "react";
 import {
   MY_PROFILE,
   SIGN_IN,
@@ -11,14 +10,14 @@ import LinkItem from "../LinkItem/LinkItem";
 import HeaderGreeting from "../HeaderGreeting/HeaderGreeting";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import ListOfNavLinks from "../ListOfNavLinks/ListOfNaLinks";
-import { UserI } from "../../../reduxFeatures/reducers/authReducer";
+import { UserType } from "../../../reduxFeatures/reducers/authReducer";
 
-type IProps = {
-  user: UserI;
-  dispatch: Dispatch<any>;
+type MainNavProps = {
+  user: UserType;
+  dispatchSetUserData: (param: null | UserType) => void;
 };
 
-const MainNav: React.FC<IProps> = ({ user, dispatch }) => {
+const MainNav: React.FC<MainNavProps> = ({ user, dispatchSetUserData }) => {
   return (
     <WidthWrapper>
       <nav>
@@ -34,7 +33,7 @@ const MainNav: React.FC<IProps> = ({ user, dispatch }) => {
               <LinkItem to={MY_PROFILE} text="Profile" />
 
               <HeaderGreeting user={user} />
-              <LogOutButton dispatch={dispatch} />
+              <LogOutButton dispatchSetUserData={dispatchSetUserData} />
             </>
           ) : (
             <>

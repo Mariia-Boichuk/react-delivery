@@ -4,24 +4,24 @@ import Button from "../../Button/Button";
 import Cookies from "js-cookie";
 import { SIGN_IN } from "../../../utils/routes";
 import { useNavigate } from "react-router-dom";
-import { setUserData } from "../../../reduxFeatures/actions/authActions";
-import { Dispatch } from "react";
+import { UserType } from "../../../reduxFeatures/reducers/authReducer";
 
-type IProps = {
-  dispatch: Dispatch<any>;
+type LogOutButtonProps = {
+  dispatchSetUserData: (param: null | UserType) => void;
 };
 
-const LogOutButton: React.FC<IProps> = ({ dispatch }) => {
+const LogOutButton: React.FC<LogOutButtonProps> = ({ dispatchSetUserData }) => {
   const redirect = useNavigate();
 
   return (
     <div className={styles.navItemHeader}>
       <Button
         text="log out"
-        onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+        onClick={(event) => {
           event.preventDefault();
 
-          dispatch(setUserData(null));
+          dispatchSetUserData(null);
+
           Cookies.remove("jwt");
 
           redirect(SIGN_IN);
