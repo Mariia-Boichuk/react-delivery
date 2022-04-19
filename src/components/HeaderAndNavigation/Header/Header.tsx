@@ -1,17 +1,16 @@
 import BelowHeader from "../BelowHeader/BelowHeader";
 import MainNav from "../MainNav/MainNav";
-import { UserI } from "../../../reduxFeatures/reducers/authReducer";
-import { Dispatch } from "react";
+import { UserType } from "../../../reduxFeatures/reducers/authReducer";
 
-type IProps = {
-  user: UserI;
-  dispatch: Dispatch<any>;
+type HeaderProps = {
+  user: UserType;
+  setUserData: (param: null | UserType) => void;
 };
 
-const Header: React.FC<IProps> = ({ user, dispatch }) => {
+const Header: React.FC<HeaderProps> = ({ user, setUserData }) => {
   return (
     <header>
-      <MainNav user={user} dispatch={dispatch} />
+      <MainNav user={user} setUserData={setUserData} />
       <BelowHeader user={user} />
     </header>
   );

@@ -1,7 +1,8 @@
 import React from "react";
 import InfoTable from "../InfoTable/InfoTable";
 import InfoRow from "../InfoRow/InfoRow";
-import GreenHr from "../GreenHr/GreenHr";
+import Line from "../Line/Line";
+
 import { Link } from "react-router-dom";
 import { ONE_LOAD } from "../../utils/routes";
 
@@ -35,7 +36,7 @@ const LoadShort = ({ itemData }) => {
           </button>
         </Link>
 
-        <GreenHr />
+        <Line />
       </InfoTable>
     </div>
   );

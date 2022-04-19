@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect, useCallback } from "react";
-import { URL_STRING } from "../../utils/consts";
+import { DEVELOPMENT_URL } from "../../utils/consts";
 import Cookies from "js-cookie";
 import useRequest from "../../utils/useRequest";
 import LoadShort from "../../components/LoadShort/LoadShort";
@@ -17,7 +17,7 @@ const LoadsPage = ({ statusForQuery }) => {
     async (jwt) => {
       const resp = await fetchData<MeResponseData>({
         method: "get",
-        url: `${URL_STRING}/api/loads?status=${statusForQuery}`,
+        url: `${DEVELOPMENT_URL}/api/loads?status=${statusForQuery}`,
         headers: {
           Authorization: `Bearer ${jwt}`,
           "Content-type": "application/json",

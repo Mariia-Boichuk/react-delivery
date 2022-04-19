@@ -1,17 +1,17 @@
-export interface UserI {
+export interface UserType {
   email: string;
   role: string;
   created_date: Date;
 }
 
 interface AuthState {
-  user: UserI | null;
+  user: UserType | null;
   jwt: string;
 }
 
 interface UserAction {
   type: string;
-  payload: UserI | null;
+  payload: UserType | null;
 }
 
 const authReducer = (

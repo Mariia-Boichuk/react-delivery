@@ -1,4 +1,4 @@
-import { URL_STRING } from "../../utils/consts";
+import { DEVELOPMENT_URL } from "../../utils/consts";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Input from "../../components/Input/Input";
 import Form from "../../components/Form/Form";
@@ -40,8 +40,8 @@ export const LoginPage: React.FC = () => {
   const submitHandler = async (values: MyFormValues) => {
     const resp = await fetchData<LoginResponseData>({
       method: "post",
-      url: `${URL_STRING}/api/auth/login`,
-      data: values,
+      url: `${DEVELOPMENT_URL}/api/auth/login`,
+     data: values,
       headers: { "Content-type": "application/json" },
     });
 
@@ -49,7 +49,7 @@ export const LoginPage: React.FC = () => {
 
     const respUser = await fetchData<MeResponseData>({
       method: "get",
-      url: `${URL_STRING}/api/users/me`,
+      url: `${DEVELOPMENT_URL}/api/users/me`,
       headers: {
         Authorization: `Bearer ${resp.jwt_token}`,
         "Content-type": "application/json",

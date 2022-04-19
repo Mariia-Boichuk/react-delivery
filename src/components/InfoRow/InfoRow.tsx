@@ -1,6 +1,8 @@
 import React from "react";
 import st from "./InfoRow.module.css";
+
 type InfoRowP = { caption: string; info: unknown };
+
 const InfoRow: React.FC<InfoRowP> = ({ caption, info }) => {
   return (
     <tr className={st.row}>

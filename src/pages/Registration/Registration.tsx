@@ -1,4 +1,4 @@
-import { URL_STRING } from "../../utils/consts";
+import { DEVELOPMENT_URL } from "../../utils/consts";
 import { useNavigate } from "react-router-dom";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { useFormik, FormikProps } from "formik";
@@ -28,7 +28,7 @@ export const Registration: React.FC = () => {
   const submitHandler = async (values: MyFormValues) => {
     await fetchData({
       method: "post",
-      url: `${URL_STRING}/api/auth/register`,
+      url: `${DEVELOPMENT_URL}/api/auth/register`,
       data: values,
       headers: { "Content-type": "application/json" },
     });

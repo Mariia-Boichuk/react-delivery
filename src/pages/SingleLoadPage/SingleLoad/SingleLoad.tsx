@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import st from "SingleLoad.module.css";
 import LoadShort from "../../../components/LoadShort/LoadShort";
-import { URL_STRING } from "../../../utils/consts";
+import { DEVELOPMENT_URL } from "../../../utils/consts";
 import { useCallback, useEffect } from "react";
 import useRequest from "../../../utils/useRequest";
 import Cookies from "js-cookie";
@@ -22,8 +22,8 @@ const SingleLoad = () => {
   const getLoads = useCallback(async (jwt) => {
     const resp = await fetchData<ResponseDataType>({
       method: "get",
-      url: `${URL_STRING}/api/loads/${id}`,
-      headers: {
+      url: `${DEVELOPMENT_URL}/api/loads/${id}`,
+ headers: {
         Authorization: `Bearer ${jwt}`,
         "Content-type": "application/json",
       },
