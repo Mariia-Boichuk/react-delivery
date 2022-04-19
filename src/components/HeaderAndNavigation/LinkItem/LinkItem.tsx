@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import st from "./LinkItem.module.css";
+import Text from "../../Text/Text";
+import styles from "./LinkItem.module.css";
 
 type LinkItemProps = {
   to: string;
@@ -9,12 +10,12 @@ type LinkItemProps = {
 
 const LinkItem: React.FC<LinkItemProps> = ({ to, text }) => {
   return (
-    <li className={st.navItemHeader}>
+    <li className={styles.navItemHeader}>
       <NavLink
         to={to}
-        className={({ isActive }) => (isActive ? st.forActive : "")}
+        className={({ isActive }) => (isActive ? styles.forActive : "")}
       >
-        {text}
+        <Text>{text}</Text>
       </NavLink>
     </li>
   );

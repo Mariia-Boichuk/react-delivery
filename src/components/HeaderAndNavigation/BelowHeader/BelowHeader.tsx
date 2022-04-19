@@ -1,27 +1,28 @@
 import React from "react";
-import st from "./BelowHeader.module.css";
+import styles from "./BelowHeader.module.css";
 import SubNav from "../SubNav/SubNav";
 import WidthWrapper from "../../WidthWrapper/WidthWrapper";
 import NavLogo from "../NavLogo/NavLogo";
-import { State } from "../../../reduxFeatures/reducers/requestReducer";
-import { useSelector } from "react-redux";
-import GreenHr from "../GreenHr/GreenHr";
+import Line from "../../Line/Line";
+import { UserType } from "../../../reduxFeatures/reducers/authReducer";
 
-const BelowHeader: React.FC = () => {
-  const user = useSelector((state: State) => state.auth.user);
+type BelowHeaderProps = {
+  user: UserType | null;
+};
 
+const BelowHeader: React.FC<BelowHeaderProps> = ({ user }) => {
   return (
-    <div className={st.white}>
-      <div className={st.belowHeader}>
+    <div className={styles.white}>
+      <div className={styles.belowHeader}>
         <WidthWrapper>
-          <div className={st.belowHeaderTop}>
+          <div className={styles.belowHeaderTop}>
             <NavLogo />
             <div>
-              <span className={st.info}> 394034-4994-77</span>
+              <span className={styles.info}> 394034-4994-77</span>
             </div>
           </div>
         </WidthWrapper>
-        <GreenHr />
+        <Line />
         {user && <SubNav />}
       </div>
     </div>
