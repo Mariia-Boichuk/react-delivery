@@ -7,8 +7,9 @@ import Input from "../../components/Input/Input";
 import Form from "../../components/Form/Form";
 import * as Yup from "yup";
 import SubmitButton from "../../components/SubmitButton/SubmitButton";
-import RadioGroupeRole from "../../components/RadioGroupeRole/RadioGroupeRole";
+
 import { useEffect, useRef } from "react";
+import RadioGroupeRole from "../../components/RadioGroupeRole/RadioGroupeRole";
 
 interface MyFormValues {
   email: string;

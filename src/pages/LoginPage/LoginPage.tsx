@@ -9,8 +9,9 @@ import useRequest from "../../utils/useRequest";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { MeResponseData } from "../../App";
-import { setUserData } from "../../reduxFeatures/actions/authActions";
+
 import { useRef, useEffect } from "react";
+import { setUserData } from "../../reduxFeatures/actions/authActions";
 
 interface MyFormValues {
   email: string;
@@ -40,7 +41,7 @@ export const LoginPage: React.FC = () => {
     const resp = await fetchData<LoginResponseData>({
       method: "post",
       url: `${DEVELOPMENT_URL}/api/auth/login`,
-      data: values,
+     data: values,
       headers: { "Content-type": "application/json" },
     });
 

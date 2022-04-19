@@ -23,7 +23,7 @@ const SingleLoad = () => {
     const resp = await fetchData<ResponseDataType>({
       method: "get",
       url: `${DEVELOPMENT_URL}/api/loads/${id}`,
-      headers: {
+ headers: {
         Authorization: `Bearer ${jwt}`,
         "Content-type": "application/json",
       },
