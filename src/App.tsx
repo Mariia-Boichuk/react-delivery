@@ -1,4 +1,4 @@
-import MyRouter from "./components/Router/MyRouter";
+import Router from "./Router/Router";
 import { useCallback, useEffect } from "react";
 import useRequest from "./utils/useRequest";
 import Cookies from "js-cookie";
@@ -44,7 +44,7 @@ const App: React.FC = () => {
   return (
     <div>
       <Header setUser={setUser} user={user} />
-      <MyRouter />
+      <Router />
     </div>
   );
 };

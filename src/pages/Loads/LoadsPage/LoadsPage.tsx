@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useEffect, useCallback } from "react";
-import { DEVELOPMENT_URL } from "../../utils/consts";
+import { DEVELOPMENT_URL } from "../../../utils/consts";
 import Cookies from "js-cookie";
-import useRequest from "../../utils/useRequest";
-import LoadShort from "../../components/LoadShort/LoadShort";
+import useRequest from "../../../utils/useRequest";
+import LoadShort from "../../../components/LoadShort/LoadShort";
 
 export type MeResponseData = {
   loads: Array<object>;

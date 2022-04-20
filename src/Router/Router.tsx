@@ -1,18 +1,18 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import ProfilePage from "../../pages/ProfilePage/ProfilePage";
-import { LoginPage } from "../../pages/LoginPage/LoginPage";
-import { Registration } from "../../pages/Registration/Registration";
-import { MY_PROFILE, SIGN_IN, REGISTER } from "../../utils/routes";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import { LoginPage } from "../pages/LoginPage/LoginPage";
+import { Registration } from "../pages/Registration/Registration";
+import { MY_PROFILE, SIGN_IN, REGISTER } from "../utils/routes";
 import { useSelector } from "react-redux";
-import { PendingView } from "../PendingView/PendingView";
-import Modal from "../Modal/Modal";
-import { ONE_LOAD } from "../../utils/routes";
-import LoadsView from "../../pages/LoadsView/LoadsView";
-import SingleLoad from "../../pages/SingleLoadPage/SingleLoad/SingleLoad";
-import { State } from "../../reduxFeatures/reducers/requestReducer";
+import { PendingView } from "../components/PendingView/PendingView";
+import Modal from "../components/Modal/Modal";
+import { ONE_LOAD } from "../utils/routes";
+import LoadsView from "../pages/Loads/LoadsView/LoadsView";
+import SingleLoad from "../pages/SingleLoadPage/SingleLoad/SingleLoad";
+import { State } from "../reduxFeatures/reducers/requestReducer";
 
-const MyRouter: React.FC = () => {
+const Router: React.FC = () => {
   const { message, status } = useSelector((state: State) => state.request);
   const user = useSelector((state: State) => state.auth.user);
 
@@ -50,4 +50,4 @@ const MyRouter: React.FC = () => {
   );
 };
 
-export default MyRouter;
+export default Router;
