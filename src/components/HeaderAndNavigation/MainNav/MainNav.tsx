@@ -14,10 +14,10 @@ import { UserType } from "../../../reduxFeatures/reducers/authReducer";
 
 type MainNavProps = {
   user: UserType;
-  setUserData: (param: null | UserType) => void;
+  setUser: (param: null | UserType) => void;
 };
 
-const MainNav: React.FC<MainNavProps> = ({ user, setUserData }) => {
+const MainNav: React.FC<MainNavProps> = ({ user, setUser }) => {
   return (
     <WidthWrapper>
       <nav>
@@ -33,7 +33,7 @@ const MainNav: React.FC<MainNavProps> = ({ user, setUserData }) => {
               <LinkItem to={MY_PROFILE} text="Profile" />
 
               <HeaderGreeting user={user} />
-              <LogOutButton setUserData={setUserData} />
+              <LogOutButton setUser={setUser} />
             </>
           ) : (
             <>
