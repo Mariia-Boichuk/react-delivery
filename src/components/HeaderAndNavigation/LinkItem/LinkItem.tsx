@@ -15,7 +15,7 @@ const LinkItem: React.FC<LinkItemProps> = ({ to, text }) => {
         to={to}
         className={({ isActive }) => (isActive ? styles.forActive : "")}
       >
-        <Text>{text}</Text>
+        {text}
       </NavLink>
     </li>
   );
