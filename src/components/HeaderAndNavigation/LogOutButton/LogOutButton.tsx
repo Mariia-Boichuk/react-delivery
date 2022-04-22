@@ -16,6 +16,7 @@ const LogOutButton: React.FC<LogOutButtonProps> = ({ setUser }) => {
   return (
     <div className={styles.navItemHeader}>
       <Button
+        type="button"
         text="log out"
         onClick={(event) => {
           event.preventDefault();

@@ -4,13 +4,18 @@ import styles from "./Button.module.css";
 
 type ButtonProps = {
   text: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  type: "button" | "submit" | "reset";
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const Button: React.FC<ButtonProps> = ({ text, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ text, type, onClick }) => {
   return (
-    <button className={styles.button} onClick={onClick}>
-      <Text> {text}</Text>
+    <button
+      className={`${styles.button} ${type === "submit" && styles.submit}`}
+      onClick={onClick}
+      type={type}
+    >
+      {text}
     </button>
   );
 };

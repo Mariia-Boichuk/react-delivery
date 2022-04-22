@@ -3,7 +3,7 @@ import PageTitle from "../../components/common/PageTitle/PageTitle";
 import Input from "../../components/common/Input/Input";
 import Form from "../../components/common/Form/Form";
 import { useFormik, FormikProps } from "formik";
-import SubmitButton from "../../components/common/SubmitButton/SubmitButton";
+import Button from "../../components/common/Button/Button";
 import * as Yup from "yup";
 import useRequest from "../../utils/useRequest";
 import Cookies from "js-cookie";
@@ -97,7 +97,7 @@ export const LoginPage: React.FC = () => {
           error={formik.errors.password}
         />
 
-        <SubmitButton />
+        <Button type="submit" text="log in" />
       </Form>
     </section>
   );
