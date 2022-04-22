@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./LogOutButton.module.css";
-import Button from "../../Button/Button";
 import Cookies from "js-cookie";
 import { SIGN_IN } from "../../../utils/routes";
 import { useNavigate } from "react-router-dom";
-import { UserType } from "../../../reduxFeatures/reducers/authReducer";
+import { UserType } from "../../../reduxFeatures/auth/authReducer";
+import Button from "../../../components/Button/Button";
 
 type LogOutButtonProps = {
   setUser: (param: null | UserType) => void;

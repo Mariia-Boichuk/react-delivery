@@ -2,10 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-
 import { BrowserRouter } from "react-router-dom";
 import { compose, createStore } from "redux";
-import allReducers from "./reduxFeatures/reducers";
+import allReducers from "./reduxFeatures";
 import { Provider } from "react-redux";
 
 declare global {

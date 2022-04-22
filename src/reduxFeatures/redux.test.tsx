@@ -5,7 +5,7 @@ import { createTestStore } from "../utils/test";
 import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { createStore } from "redux";
-import allReducers from "./reducers/index";
+import allReducers from "./index";
 
 const renderWithReduxAndRouter = (component) => {
   const store = createStore(allReducers);

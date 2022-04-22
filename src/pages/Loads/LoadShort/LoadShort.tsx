@@ -1,10 +1,10 @@
 import React from "react";
-import InfoTable from "../InfoTable/InfoTable";
-import InfoRow from "../InfoRow/InfoRow";
-import Line from "../Line/Line";
+import InfoTable from "../../../components/InfoTable/InfoTable";
+import InfoRow from "../../../components/InfoRow/InfoRow";
+import Line from "../../../components/Line/Line";
 
 import { Link } from "react-router-dom";
-import { ONE_LOAD } from "../../utils/routes";
+import { ONE_LOAD } from "../../../utils/routes";
 
 const LoadShort = ({ itemData }) => {
   return !itemData ? (

@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./SubNav.module.css";
-import WidthWrapper from "../../WidthWrapper/WidthWrapper";
 import LinkItem from "../LinkItem/LinkItem";
 import {
   POSTED_LOADS,
@@ -8,6 +7,7 @@ import {
   DRAFTED_LOADS,
 } from "../../../utils/routes";
 import ListOfNavLinks from "../ListOfNavLinks/ListOfNaLinks";
+import WidthWrapper from "../../../components/WidthWrapper/WidthWrapper";
 
 const SubNav: React.FC = () => {
   return (

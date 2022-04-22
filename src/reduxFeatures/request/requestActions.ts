@@ -1,4 +1,4 @@
-import { StatusType } from "../reducers/requestReducer";
+import { StatusType } from "./requestReducer";
 
 export const setLoading = (isLoading: boolean) => {
   return {

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import requestReducer from "./requestReducer";
-import authReducer from "./authReducer";
+import requestReducer from "./request/requestReducer";
+import authReducer from "./auth/authReducer";
 
 const allReducers = combineReducers({
   request: requestReducer,

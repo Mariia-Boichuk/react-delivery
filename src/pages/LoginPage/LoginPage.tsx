@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { MeResponseData } from "../../App";
 
 import { useRef, useEffect } from "react";
-import { setUserData } from "../../reduxFeatures/actions/authActions";
+import { setUserData } from "../../reduxFeatures/auth/authActions";
 
 interface MyFormValues {
   email: string;

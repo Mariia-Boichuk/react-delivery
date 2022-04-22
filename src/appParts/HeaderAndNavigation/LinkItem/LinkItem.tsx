@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Text from "../../Text/Text";
 import styles from "./LinkItem.module.css";
 
 type LinkItemProps = {

@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./BelowHeader.module.css";
 import SubNav from "../SubNav/SubNav";
-import WidthWrapper from "../../WidthWrapper/WidthWrapper";
 import NavLogo from "../NavLogo/NavLogo";
-import Line from "../../Line/Line";
-import { UserType } from "../../../reduxFeatures/reducers/authReducer";
+import { UserType } from "../../../reduxFeatures/auth/authReducer";
+import Line from "../../../components/Line/Line";
+import WidthWrapper from "../../../components/WidthWrapper/WidthWrapper";
 
 type BelowHeaderProps = {
   user: UserType | null;
