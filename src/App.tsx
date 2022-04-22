@@ -1,13 +1,13 @@
-import MyRouter from "./components/Router/MyRouter";
 import { useCallback, useEffect } from "react";
 import useRequest from "./utils/useRequest";
 import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
-import { UserType } from "./reduxFeatures/reducers/authReducer";
-import Header from "./components/HeaderAndNavigation/Header/Header";
-import { State } from "./reduxFeatures/reducers/requestReducer";
-import { setUserData } from "./reduxFeatures/actions/authActions";
+import { UserType } from "./reduxFeatures/auth/authReducer";
+import { State } from "./reduxFeatures/request/requestReducer";
+import { setUserData } from "./reduxFeatures/auth/authActions";
 import { DEVELOPMENT_URL } from "./utils/consts";
+import Router from "./components/Router/Router";
+import Header from "./components/HeaderAndNavigation/Header/Header";
 
 export type MeResponseData = {
   user: UserType;
@@ -44,7 +44,7 @@ const App: React.FC = () => {
   return (
     <div>
       <Header setUser={setUser} user={user} />
-      <MyRouter />
+      <Router />
     </div>
   );
 };

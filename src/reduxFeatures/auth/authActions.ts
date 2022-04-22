@@ -1,4 +1,4 @@
-import { UserType } from "../reducers/authReducer";
+import { UserType } from "./authReducer";
 
 export const setUserData = (user: UserType) => {
   return {

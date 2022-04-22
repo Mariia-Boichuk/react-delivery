@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import st from "SingleLoad.module.css";
-import LoadShort from "../../../components/LoadShort/LoadShort";
+import LoadShort from "../../Loads/LoadShort/LoadShort";
 import { DEVELOPMENT_URL } from "../../../utils/consts";
 import { useCallback, useEffect } from "react";
 import useRequest from "../../../utils/useRequest";

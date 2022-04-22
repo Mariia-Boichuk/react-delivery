@@ -1,9 +1,9 @@
 import { DEVELOPMENT_URL } from "../../utils/consts";
-import PageTitle from "../../components/PageTitle/PageTitle";
-import Input from "../../components/Input/Input";
-import Form from "../../components/Form/Form";
+import PageTitle from "../../components/common/PageTitle/PageTitle";
+import Input from "../../components/common/Input/Input";
+import Form from "../../components/common/Form/Form";
 import { useFormik, FormikProps } from "formik";
-import SubmitButton from "../../components/SubmitButton/SubmitButton";
+import SubmitButton from "../../components/common/SubmitButton/SubmitButton";
 import * as Yup from "yup";
 import useRequest from "../../utils/useRequest";
 import Cookies from "js-cookie";
@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { MeResponseData } from "../../App";
 
 import { useRef, useEffect } from "react";
-import { setUserData } from "../../reduxFeatures/actions/authActions";
+import { setUserData } from "../../reduxFeatures/auth/authActions";
 
 interface MyFormValues {
   email: string;
@@ -41,7 +41,7 @@ export const LoginPage: React.FC = () => {
     const resp = await fetchData<LoginResponseData>({
       method: "post",
       url: `${DEVELOPMENT_URL}/api/auth/login`,
-     data: values,
+      data: values,
       headers: { "Content-type": "application/json" },
     });
 

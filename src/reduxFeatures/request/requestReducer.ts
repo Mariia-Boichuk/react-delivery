@@ -1,4 +1,4 @@
-import { UserType } from "./authReducer";
+import { UserType } from "../auth/authReducer";
 
 export type ActionSet = {
   type: string;

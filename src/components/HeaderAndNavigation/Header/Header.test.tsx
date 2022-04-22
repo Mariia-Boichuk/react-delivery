@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { screen, render, fireEvent } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import Header from "./Header";
-import allReducers from "../../../reduxFeatures/reducers/index";
+import allReducers from "../../../reduxFeatures/index";
 
 const renderWithReduxAndRouter = (component) => {
   const store = createStore(allReducers);

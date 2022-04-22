@@ -1,6 +1,6 @@
 import BelowHeader from "../BelowHeader/BelowHeader";
 import MainNav from "../MainNav/MainNav";
-import { UserType } from "../../../reduxFeatures/reducers/authReducer";
+import { UserType } from "../../../reduxFeatures/auth/authReducer";
 
 type HeaderProps = {
   user: UserType;

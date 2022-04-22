@@ -5,12 +5,13 @@ import {
   CREATE_TRUCK,
   CREATE_LOAD,
 } from "../../../utils/routes";
-import WidthWrapper from "../../WidthWrapper/WidthWrapper";
+
 import LinkItem from "../LinkItem/LinkItem";
 import HeaderGreeting from "../HeaderGreeting/HeaderGreeting";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import ListOfNavLinks from "../ListOfNavLinks/ListOfNaLinks";
-import { UserType } from "../../../reduxFeatures/reducers/authReducer";
+import { UserType } from "../../../reduxFeatures/auth/authReducer";
+import WidthWrapper from "../../../components/common/WidthWrapper/WidthWrapper";
 
 type MainNavProps = {
   user: UserType;
