@@ -7,7 +7,7 @@ import {
   DRAFTED_LOADS,
 } from "../../../utils/routes";
 import ListOfNavLinks from "../ListOfNavLinks/ListOfNaLinks";
-import WidthWrapper from "../../../components/WidthWrapper/WidthWrapper";
+import WidthWrapper from "../../../components/common/WidthWrapper/WidthWrapper";
 
 const SubNav: React.FC = () => {
   return (

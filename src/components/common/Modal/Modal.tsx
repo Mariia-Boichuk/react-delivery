@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import st from "./Modal.module.css";
 import { useDispatch } from "react-redux";
-import { setMes } from "../../reduxFeatures/request/requestActions";
-import { clearStatus } from "../../reduxFeatures/request/requestActions";
+import { setMes } from "../../../reduxFeatures/request/requestActions";
+import { clearStatus } from "../../../reduxFeatures/request/requestActions";
 
 type ModalProps = {
   mes: string;

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./HeaderGreeting.module.css";
 import { UserType } from "../../../reduxFeatures/auth/authReducer";
-import Text from "../../../components/Text/Text";
+import Text from "../../../components/common/Text/Text";
 
 type HeaderGreetingProps = {
   user: UserType;

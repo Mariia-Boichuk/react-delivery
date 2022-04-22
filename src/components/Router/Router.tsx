@@ -6,7 +6,7 @@ import { Registration } from "../../pages/Registration/Registration";
 import { MY_PROFILE, SIGN_IN, REGISTER } from "../../utils/routes";
 import { useSelector } from "react-redux";
 import { PendingView } from "../PendingView/PendingView";
-import Modal from "../../components/Modal/Modal";
+import Modal from "../../components/common/Modal/Modal";
 import { ONE_LOAD } from "../../utils/routes";
 import LoadsView from "../../pages/Loads/LoadsView/LoadsView";
 import SingleLoad from "../../pages/SingleLoadPage/SingleLoad/SingleLoad";

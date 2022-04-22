@@ -3,8 +3,8 @@ import styles from "./BelowHeader.module.css";
 import SubNav from "../SubNav/SubNav";
 import NavLogo from "../NavLogo/NavLogo";
 import { UserType } from "../../../reduxFeatures/auth/authReducer";
-import Line from "../../../components/Line/Line";
-import WidthWrapper from "../../../components/WidthWrapper/WidthWrapper";
+import Line from "../../../components/common/Line/Line";
+import WidthWrapper from "../../../components/common/WidthWrapper/WidthWrapper";
 
 type BelowHeaderProps = {
   user: UserType | null;

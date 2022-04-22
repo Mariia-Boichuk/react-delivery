@@ -1,7 +1,7 @@
 import React from "react";
-import InfoTable from "../../../components/InfoTable/InfoTable";
-import InfoRow from "../../../components/InfoRow/InfoRow";
-import Line from "../../../components/Line/Line";
+import InfoTable from "../../../components/common/InfoTable/InfoTable";
+import InfoRow from "../../../components/common/InfoRow/InfoRow";
+import Line from "../../../components/common/Line/Line";
 
 import { Link } from "react-router-dom";
 import { ONE_LOAD } from "../../../utils/routes";

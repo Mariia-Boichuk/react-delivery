@@ -1,6 +1,6 @@
-import InfoTable from "../../components/InfoTable/InfoTable";
-import InfoRow from "../../components/InfoRow/InfoRow";
-import PageTitle from "../../components/PageTitle/PageTitle";
+import InfoTable from "../../components/common/InfoTable/InfoTable";
+import InfoRow from "../../components/common/InfoRow/InfoRow";
+import PageTitle from "../../components/common/PageTitle/PageTitle";
 import { State } from "../../reduxFeatures/request/requestReducer";
 import { useSelector } from "react-redux";
 

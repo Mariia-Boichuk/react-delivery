@@ -1,15 +1,15 @@
 import { DEVELOPMENT_URL } from "../../utils/consts";
 import { useNavigate } from "react-router-dom";
-import PageTitle from "../../components/PageTitle/PageTitle";
+import PageTitle from "../../components/common/PageTitle/PageTitle";
 import { useFormik, FormikProps } from "formik";
 import useRequest from "../../utils/useRequest";
-import Input from "../../components/Input/Input";
-import Form from "../../components/Form/Form";
+import Input from "../../components/common/Input/Input";
+import Form from "../../components/common/Form/Form";
 import * as Yup from "yup";
-import SubmitButton from "../../components/SubmitButton/SubmitButton";
+import SubmitButton from "../../components/common/SubmitButton/SubmitButton";
 
 import { useEffect, useRef } from "react";
-import RadioGroupeRole from "../../components/RadioGroupeRole/RadioGroupeRole";
+import RadioGroupeRole from "../../components/common/RadioGroupeRole/RadioGroupeRole";
 
 interface MyFormValues {
   email: string;

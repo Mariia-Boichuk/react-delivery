@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { SIGN_IN } from "../../../utils/routes";
 import { useNavigate } from "react-router-dom";
 import { UserType } from "../../../reduxFeatures/auth/authReducer";
-import Button from "../../../components/Button/Button";
+import Button from "../../../components/common/Button/Button";
 
 type LogOutButtonProps = {
   setUser: (param: null | UserType) => void;

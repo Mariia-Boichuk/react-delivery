@@ -11,7 +11,7 @@ import HeaderGreeting from "../HeaderGreeting/HeaderGreeting";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import ListOfNavLinks from "../ListOfNavLinks/ListOfNaLinks";
 import { UserType } from "../../../reduxFeatures/auth/authReducer";
-import WidthWrapper from "../../../components/WidthWrapper/WidthWrapper";
+import WidthWrapper from "../../../components/common/WidthWrapper/WidthWrapper";
 
 type MainNavProps = {
   user: UserType;
