@@ -1,5 +1,4 @@
 import React from "react";
-import Text from "../Text/Text";
 import styles from "./Button.module.css";
 
 type ButtonProps = {
@@ -11,7 +10,7 @@ type ButtonProps = {
 const Button: React.FC<ButtonProps> = ({ text, type, onClick }) => {
   return (
     <button
-      className={`${styles.button} ${type === "submit" && styles.submit}`}
+      className={`${styles.button} ${type === "submit" ? styles.submit : ""}`}
       onClick={onClick}
       type={type}
     >
