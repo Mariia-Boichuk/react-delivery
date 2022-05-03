@@ -1,5 +1,5 @@
 .hr {
   border: none;
-  background-color: #66c05d;
+  background-color: var(--primary-color);
   height: 2px;
 }

@@ -1,14 +1,14 @@
 .navItemHeader {
   margin-right: 20px;
   margin-left: 20px;
-  color: #333333;
+  color: var(--text-lighter-color);
 }
 
 a {
-  color: #333333;
+  color: var(--text-lighter-color);
 }
 
 .forActive {
-  color: darkgreen;
+  color: var(--dark-color);
   font-weight: bold;
 }

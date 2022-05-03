@@ -1,6 +1,6 @@
 .button {
   border-radius: 20px;
-  border: 3px solid #66c05d;
+  border: 3px solid var(--primary-color);
   padding: 10px 15px;
   background-color: transparent;
   font-size: 18px;
@@ -8,15 +8,11 @@
 }
 
 .button:hover {
-  background-color: rgb(53, 174, 41);
+  background-color: var(--darker-primary-color);
   opacity: 0.5;
 }
 
 .submit {
-  background-color: #66c05d;
-  color: white;
-}
-
-.submit:hover {
-  background-color: green;
+  background-color: var(--primary-color);
+  color: var(--white-color);
 }

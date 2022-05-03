@@ -1,3 +1,16 @@
+:root {
+  --primary-color: #66c05d;
+  --darker-primary-color: #228b22;
+  --dark-color: #006400;
+  --text-lighter-color: #333333;
+  --grey-light-color: #bcbecb;
+  --light-color: #efefef;
+  --white-color: #fff;
+  --form-shadow-color: #00000033;
+  --error-color: #d22b2b;
+  --modal-bgd--color: #212121f2;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -6,7 +19,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: #efefef;
+  background-color: var(--light-color);
 }
 
 * {
@@ -26,67 +39,6 @@ a:hover {
   opacity: 0.6;
 }
 
-/* button {
-  color: inherit;
-} */
-
 li {
   list-style: none;
-}
-.input,
-.btn {
-  background: none;
-  border: none;
-  transition: 0.3s linear;
-  -webkit-transition: 0.3s linear;
-  -moz-transition: 0.3s linear;
-  -ms-transition: 0.3s linear;
-  -o-transition: 0.3s linear;
-}
-
-.btn {
-  cursor: pointer;
-}
-
-.button {
-  display: flex;
-  height: 50px;
-  padding: 0;
-  background: #009578;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  overflow: hidden;
-  font-family: "Quicksand", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.button:hover {
-  background: #008168;
-}
-
-.button:active {
-  background: #006e58;
-}
-
-.button__text,
-.button__icon {
-  display: inline-flex;
-  align-items: center;
-  padding: 1em;
-  color: #fff;
-  height: 100%;
-  width: 100%;
-}
-
-.icon-button__icon {
-  fill: #fff;
-  width: 100%;
-  height: 100%;
-}
-
-label {
-  padding: 10px;
 }

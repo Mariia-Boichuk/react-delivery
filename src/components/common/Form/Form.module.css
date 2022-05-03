@@ -1,7 +1,7 @@
 .form {
-  background-color: white;
+  background-color: var(--white-color);
   border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px var(--form-shadow-color);
   padding: 25px;
   margin: 0 auto;
   max-width: 500px;
