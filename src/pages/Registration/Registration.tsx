@@ -6,7 +6,7 @@ import useRequest from "../../utils/useRequest";
 import Input from "../../components/common/Input/Input";
 import Form from "../../components/common/Form/Form";
 import * as Yup from "yup";
-import SubmitButton from "../../components/common/SubmitButton/SubmitButton";
+import Button from "../../components/common/Button/Button";
 
 import { useEffect, useRef } from "react";
 import RadioGroupeRole from "../../components/common/RadioGroupeRole/RadioGroupeRole";
@@ -81,7 +81,7 @@ export const Registration: React.FC = () => {
 
         <RadioGroupeRole formik={formik} />
 
-        <SubmitButton />
+        <Button type="submit" text="register" />
       </Form>
     </section>
   );

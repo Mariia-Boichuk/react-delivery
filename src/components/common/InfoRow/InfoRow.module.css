@@ -7,12 +7,12 @@
 }
 
 .caption {
-  background-color: #66c05d;
+  background-color: var(--primary-color);
   border-radius: 9px 0 0 9px;
 }
 
 .info {
-  border: 1px solid #66c05d;
+  border: 1px solid var(--primary-color);
   border-radius: 0 9px 9px 0;
 }
 .row {

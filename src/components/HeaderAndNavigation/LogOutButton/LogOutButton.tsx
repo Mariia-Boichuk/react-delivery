@@ -14,8 +14,9 @@ const LogOutButton: React.FC<LogOutButtonProps> = ({ setUser }) => {
   const redirect = useNavigate();
 
   return (
-    <div className={styles.navItemHeader}>
+    <div className={styles.itemHeader}>
       <Button
+        type="button"
         text="log out"
         onClick={(event) => {
           event.preventDefault();

@@ -1,6 +1,6 @@
 .input {
   border: 0;
-  border-bottom: 1px solid #bcbecb;
+  border-bottom: 1px solid var(--grey-light-color);
   color: inherit;
   width: 100%;
   padding: 3px;

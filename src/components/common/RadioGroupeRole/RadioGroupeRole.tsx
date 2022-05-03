@@ -3,7 +3,7 @@ import React from "react";
 const RadioGroupeRole = ({ formik }) => {
   return (
     <div>
-      <label htmlFor="role">Role</label>
+      <label >Role</label>
       <label>
         <input
           type="radio"
