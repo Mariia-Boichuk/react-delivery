@@ -1,6 +1,6 @@
 import { FormikErrors } from "formik";
 import React, { ChangeEventHandler } from "react";
-import styles from "./Input.module.css";
+import styles from "./InputText.module.css";
 
 type InputProps = {
   value: string;
