@@ -1,6 +1,6 @@
 import { DEVELOPMENT_URL } from "../../utils/consts";
 import PageTitle from "../../components/common/PageTitle/PageTitle";
-import Input from "../../components/common/Input/Input";
+import InputText from "../../components/common/InputText/InputText";
 import Form from "../../components/common/Form/Form";
 import { useFormik, FormikProps } from "formik";
 import Button from "../../components/common/Button/Button";
@@ -9,8 +9,6 @@ import useRequest from "../../utils/useRequest";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { MeResponseData } from "../../App";
-
-import { useRef, useEffect } from "react";
 import { setUserData } from "../../reduxFeatures/auth/authActions";
 
 interface MyFormValues {
@@ -29,13 +27,8 @@ const initialValues = {
 };
 
 export const LoginPage: React.FC = () => {
-  const emailInput = useRef(null);
   const dispatch = useDispatch();
   const { fetchData } = useRequest();
-
-  useEffect(() => {
-    emailInput.current.focus();
-  }, []);
 
   const submitHandler = async (values: MyFormValues) => {
     const resp = await fetchData<LoginResponseData>({
@@ -78,17 +71,17 @@ export const LoginPage: React.FC = () => {
       <PageTitle title="Log in" />
 
       <Form submitHandler={formik.handleSubmit}>
-        <Input
-          refpr={emailInput}
+        <InputText
           value={formik.values.email}
           onChange={formik.handleChange}
           type="email"
           name="email"
           placeholder="Email"
           error={formik.errors.email}
+          autofocus={true}
         />
 
-        <Input
+        <InputText
           value={formik.values.password}
           onChange={formik.handleChange}
           type="password"

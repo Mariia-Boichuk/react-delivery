@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import PageTitle from "../../components/common/PageTitle/PageTitle";
 import { useFormik, FormikProps } from "formik";
 import useRequest from "../../utils/useRequest";
-import Input from "../../components/common/Input/Input";
+import InputText from "../../components/common/InputText/InputText";
 import Form from "../../components/common/Form/Form";
 import * as Yup from "yup";
 import Button from "../../components/common/Button/Button";
-import { useEffect, useRef } from "react";
 import RadioInputsGroupe from "../../components/common/RadioInputsGroupe/RadioInputsGroupe";
+import { SIGN_IN } from "../../utils/routes";
 
 interface MyFormValues {
   email: string;
@@ -17,13 +17,8 @@ interface MyFormValues {
 }
 
 export const Registration: React.FC = () => {
-  const navg = useNavigate();
+  const redirect = useNavigate();
   const { fetchData } = useRequest();
-  const emailInput = useRef(null);
-
-  // useEffect(() => {
-  //   emailInput.current.focus();
-  // }, []);
 
   const submitHandler = async (values: MyFormValues) => {
     await fetchData({
@@ -33,7 +28,7 @@ export const Registration: React.FC = () => {
       headers: { "Content-type": "application/json" },
     });
 
-    navg("/signin");
+    redirect(SIGN_IN);
   };
   const initialValues = {
     email: "",
@@ -60,16 +55,17 @@ export const Registration: React.FC = () => {
     <section>
       <PageTitle title="Register" />
       <Form submitHandler={formik.handleSubmit}>
-        <Input
+        <InputText
           value={formik.values.email}
           onChange={formik.handleChange}
           type="email"
           name="email"
           placeholder="Email"
           error={formik.errors.email}
+          autofocus={true}
         />
 
-        <Input
+        <InputText
           value={formik.values.password}
           onChange={formik.handleChange}
           type="password"

@@ -1,34 +1,34 @@
 import { FormikErrors } from "formik";
 import React, { ChangeEventHandler } from "react";
-import st from "./Input.module.css";
+import styles from "./Input.module.css";
 
 type InputProps = {
   value: string;
-  refpr?: React.RefObject<HTMLInputElement>;
   name: string;
   type: string;
   placeholder: string;
   error: FormikErrors<string>;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  autofocus?: boolean;
 };
 
-const Input: React.FC<InputProps> = ({
+const InputText: React.FC<InputProps> = ({
   value,
   name,
   type,
   onChange,
   placeholder,
   error,
-  refpr,
+  autofocus,
 }) => {
   return (
-    <div className={st.formControl}>
+    <div className={styles.formControl}>
       <input
         type={type}
         value={value}
         name={name}
-        ref={refpr}
-        className={st.input}
+        autoFocus={autofocus ? true : false}
+        className={styles.input}
         placeholder={placeholder}
         onChange={onChange}
       />
@@ -38,4 +38,4 @@ const Input: React.FC<InputProps> = ({
   );
 };
 
-export default Input;
+export default InputText;

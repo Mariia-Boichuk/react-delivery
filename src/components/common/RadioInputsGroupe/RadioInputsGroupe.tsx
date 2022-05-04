@@ -1,4 +1,5 @@
-import React, { ChangeEventHandler, FC } from "react";
+import React, { ChangeEventHandler, FC, Fragment } from "react";
+import styles from "./RadioInputsGroupe.module.css";
 
 export type choiceType = {
   label: string;
@@ -19,19 +20,20 @@ const RadioInputsGroupe: FC<RadioInputsGroupeProps> = ({
   choices,
 }) => {
   return (
-    <div>
-      <label>{name}</label>
+    <div className={styles.radio}>
+      <label className={styles.groupLabel}>{name}: </label>
       {choices.map((item) => (
-        <label key={item.value}>
+        <Fragment key={item.value}>
           <input
+            className={styles.groupLabel}
             type="radio"
             name={name}
             value={item.value}
             checked={value === item.value}
             onChange={onChange}
           />
-          {item.label}
-        </label>
+          <label className={styles.label}>{item.label}</label>
+        </Fragment>
       ))}
     </div>
   );
