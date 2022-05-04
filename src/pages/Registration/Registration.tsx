@@ -7,9 +7,8 @@ import Input from "../../components/common/Input/Input";
 import Form from "../../components/common/Form/Form";
 import * as Yup from "yup";
 import Button from "../../components/common/Button/Button";
-
 import { useEffect, useRef } from "react";
-import RadioGroupeRole from "../../components/common/RadioGroupeRole/RadioGroupeRole";
+import RadioInputsGroupe from "../../components/common/RadioInputsGroupe/RadioInputsGroupe";
 
 interface MyFormValues {
   email: string;
@@ -22,9 +21,10 @@ export const Registration: React.FC = () => {
   const { fetchData } = useRequest();
   const emailInput = useRef(null);
 
-  useEffect(() => {
-    emailInput.current.focus();
-  }, []);
+  // useEffect(() => {
+  //   emailInput.current.focus();
+  // }, []);
+
   const submitHandler = async (values: MyFormValues) => {
     await fetchData({
       method: "post",
@@ -67,7 +67,6 @@ export const Registration: React.FC = () => {
           name="email"
           placeholder="Email"
           error={formik.errors.email}
-          refpr={emailInput}
         />
 
         <Input
@@ -79,8 +78,15 @@ export const Registration: React.FC = () => {
           error={formik.errors.password}
         />
 
-        <RadioGroupeRole formik={formik} />
-
+        <RadioInputsGroupe
+          name="role"
+          onChange={formik.handleChange}
+          value={formik.values.role}
+          choices={[
+            { label: "Shipper", value: "SHIPPER" },
+            { label: "Driver", value: "DRIVER" },
+          ]}
+        />
         <Button type="submit" text="register" />
       </Form>
     </section>
