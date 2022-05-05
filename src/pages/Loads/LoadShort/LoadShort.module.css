@@ -1,0 +1,13 @@
+.wrapper {
+  max-width: 450px;
+  margin: 0 auto;
+  padding-bottom: 15px;
+}
+
+.wrapper:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+.wrapper button {
+  margin: 10px 0;
+}

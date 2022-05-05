@@ -19,9 +19,7 @@ const myStore = createStore(allReducers, composeEnhancers());
 ReactDOM.render(
   <Provider store={myStore}>
     <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <App />
     </React.StrictMode>
   </Provider>,
   document.getElementById("root")

@@ -1,8 +1,8 @@
-import InfoTable from "../../components/common/InfoTable/InfoTable";
 import InfoRow from "../../components/common/InfoRow/InfoRow";
 import PageTitle from "../../components/common/PageTitle/PageTitle";
 import { State } from "../../reduxFeatures/request/requestReducer";
 import { useSelector } from "react-redux";
+import WidthWrapper from "../../components/common/WidthWrapper/WidthWrapper";
 
 const ProfilePage = () => {
   const { user } = useSelector((state: State) => state.auth);
@@ -10,14 +10,14 @@ const ProfilePage = () => {
   return (
     <section>
       <PageTitle title="profile info" />
-      <InfoTable>
+      <WidthWrapper>
         <InfoRow caption="Email" info={user.email} />
         <InfoRow caption="Role" info={user.role} />
         <InfoRow
           caption="Date created"
           info={new Date(user.created_date).toLocaleString()}
         />
-      </InfoTable>
+      </WidthWrapper>
     </section>
   );
 };
