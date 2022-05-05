@@ -1,10 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Input from "./Input";
+import InputText from "./InputText";
 
 test("renders error text", () => {
   render(
-    <Input
+    <InputText
       value="123"
       name="email"
       placeholder="email"

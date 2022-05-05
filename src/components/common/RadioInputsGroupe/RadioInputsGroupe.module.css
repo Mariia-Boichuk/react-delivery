@@ -1,0 +1,19 @@
+.radio {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 5px var(--form-shadow-color);
+  margin-bottom: 15px;
+}
+
+.label {
+  padding: 8px 14px 8px 5px;
+  font-family: sans-serif;
+}
+
+.groupLabel {
+  padding-right: 20px;
+  font-weight: 700;
+}
