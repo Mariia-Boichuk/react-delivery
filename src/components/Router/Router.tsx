@@ -11,6 +11,7 @@ import { ONE_LOAD } from "../../utils/routes";
 import LoadsView from "../../pages/Loads/LoadsView/LoadsView";
 import SingleLoad from "../../pages/SingleLoadPage/SingleLoad/SingleLoad";
 import { State } from "../../reduxFeatures/request/requestReducer";
+import ColorDetails from "../ColorDetails";
 
 const Router: React.FC = () => {
   const { message, status } = useSelector((state: State) => state.request);
@@ -30,6 +31,8 @@ const Router: React.FC = () => {
     <main>
       <Suspense fallback={<PendingView />}>
         <Routes>
+          <Route path="/col" element={<ColorDetails />} />
+
           {user ? (
             <>
               <Route path={MY_PROFILE} element={<ProfilePage />} />

@@ -13,18 +13,38 @@ export type MeResponseData = {
   user: UserType;
 };
 
+const wrapPromise = (promise) => {
+  let status = "pending";
+  let result;
+  let suspender = promise.then(
+    (res) => {
+      status = "success";
+      result = res;
+    },
+    (err) => {
+      status = "error";
+      result = err;
+    }
+  );
+  return {
+    read() {
+      if (status === "pending") {
+        throw suspender;
+      } else if (status === "error") {
+        throw result;
+      } else if (status === "success") {
+        return result;
+      }
+    },
+  };
+};
+
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const { fetchData } = useRequest();
 
-  const user = useSelector((state: State) => state.auth.user);
-
-  const setUser = (param) => {
-    dispatch(setUserData(param));
-  };
-
-  const getMe = useCallback(async (jwt) => {
-    const resp = await fetchData<MeResponseData>({
+  const fetchColorData = async (jwt) => {
+    const colorPromise = fetchData<MeResponseData>({
       method: "get",
       url: `${DEVELOPMENT_URL}/api/users/me`,
       headers: {
@@ -32,12 +52,22 @@ const App: React.FC = () => {
         "Content-type": "application/json",
       },
     });
-    dispatch(setUserData(resp.user));
-  }, []);
+    //   dispatch(setUserData(resp.user));
+    return {
+      color: wrapPromise(colorPromise),
+    };
+  };
+  const resource: any = fetchColorData(Cookies.get("jwt"));
+
+  const user = useSelector((state: State) => state.auth.user);
+
+  const setUser = (param) => {
+    dispatch(setUserData(param));
+  };
 
   useEffect(() => {
     if (Cookies.get("jwt")) {
-      getMe(Cookies.get("jwt"));
+      resource.color.read();
     }
   }, []);
 
