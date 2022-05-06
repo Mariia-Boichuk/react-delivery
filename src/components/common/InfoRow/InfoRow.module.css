@@ -9,12 +9,17 @@
 .caption {
   background-color: var(--primary-color);
   border-radius: 9px 0 0 9px;
+  flex-basis: 35%;
 }
 
 .info {
   border: 1px solid var(--primary-color);
   border-radius: 0 9px 9px 0;
+  flex-basis: 65%;
 }
+
 .row {
-  margin-bottom: 5px;
+  margin-bottom: 1px;
+  display: flex;
+  max-width: 100%;
 }

@@ -8,6 +8,7 @@ import { setUserData } from "./reduxFeatures/auth/authActions";
 import { DEVELOPMENT_URL } from "./utils/consts";
 import Router from "./components/Router/Router";
 import Header from "./components/HeaderAndNavigation/Header/Header";
+import { BrowserRouter } from "react-router-dom";
 
 export type MeResponseData = {
   user: UserType;
@@ -42,10 +43,10 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <BrowserRouter>
       <Header setUser={setUser} user={user} />
       <Router />
-    </div>
+    </BrowserRouter>
   );
 };
 
